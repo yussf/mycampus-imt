@@ -4,9 +4,7 @@
   "description": "MyCampus",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "build": "webpack --config webpack.conf.js",
-    "deploy": "npm run build && gh-pages -d build"
+    "start": "node app.js"
   },
 
   "author": "Youssef DOUBLI",
