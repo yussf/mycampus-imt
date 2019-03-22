@@ -17,4 +17,8 @@ steps:
 
 - script: |
     npm install
+    npm install request --save
+    npm install express --save
+    npm install body-parser --save
+    npm intall pg --save
   displayName: 'npm install and build'
