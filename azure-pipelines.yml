@@ -16,9 +16,6 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm install request
-    npm install express
-    npm install body-parser
-    npm install pg
-    npm install
+    npm install -g 
+    npm run build
   displayName: 'npm install and build'
