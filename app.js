@@ -22,7 +22,6 @@ app.post('/webhook', (req, res) => {
 
   // Parse the request body from the POST
   let body = req.body;
-
   // Check the webhook event is from a Page subscription
   if (body.object === 'page') {
 
@@ -70,10 +69,8 @@ app.get('/webhook', (req, res) => {
 
   // Check if a token and mode were sent
   if (mode && token) {
-
     // Check the mode and token sent are correct
     if (mode === 'subscribe' && token === VERIFY_TOKEN) {
-
       // Respond with 200 OK and challenge token from the request
       console.log('WEBHOOK_VERIFIED');
       res.status(200).send(challenge);
@@ -106,11 +103,7 @@ request(curl, function (error, response, body) {
     // will be added to the body of our request to the Send API
 
   }
-
-
 }
-
-
 function callSendAPI(sender_psid, response) {
   // Construct the message body
   let request_body = {
