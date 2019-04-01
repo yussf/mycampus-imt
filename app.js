@@ -1,6 +1,7 @@
 'use strict';
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
-const  utils = require('./utils.js');
+const utils = require('./utils.js');
+const facebook = require('libs/facebook.js');
 // Imports dependencies and set up http server
 const
   request = require('request'),
@@ -39,7 +40,7 @@ app.post('/webhook', (req, res) => {
       // Check if the event is a message or postback and
       // pass the event to the appropriate handler function
       if (webhook_event.message) {
-        handleMessage(sender_psid, webhook_event.message);
+        facebook.handleMessage(sender_psid, webhook_event.message);
       } else if (webhook_event.postback) {
 
         handlePostback(sender_psid, webhook_event.postback);
@@ -81,49 +82,3 @@ app.get('/webhook', (req, res) => {
     }
   }
 });
-
-function handleMessage(sender_psid, received_message) {
-  let response,name,curl;
-  curl = "https://graph.facebook.com/v3.2/"+sender_psid+"?fields=id%2Cname%2Cfirst_name%2Clast_name&access_token="+PAGE_ACCESS_TOKEN
-  // Checks if the message contains text
-  if (received_message.text) {
-
-request(curl, function (error, response, body) {
-  let json = JSON.parse(body) ;
-  console.log(json.name);
-  name = json.first_name;
-
-  response = {
-    "text": "Hello "+name+"!"
-  }
-  // Send the response message
-  callSendAPI(sender_psid, response);
-});
-    // Create the payload for a basic text message, which
-    // will be added to the body of our request to the Send API
-
-  }
-}
-function callSendAPI(sender_psid, response) {
-  // Construct the message body
-  let request_body = {
-    "recipient": {
-      "id": sender_psid
-    },
-    "message": response
-  }
-
-  // Send the HTTP request to the Messenger Platform
-  request({
-    "uri": "https://graph.facebook.com/v2.6/me/messages",
-    "qs": { "access_token": PAGE_ACCESS_TOKEN },
-    "method": "POST",
-    "json": request_body
-  }, (err, res, body) => {
-    if (!err) {
-      console.log('message sent!')
-    } else {
-      console.error("Unable to send message:" + err);
-    }
-  });
-}
