@@ -3,7 +3,7 @@ const client = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: true,
 });
-const db = require('./db_connector.js') ;
+const db = require('./libs/db_connector.js') ;
 module.exports = {
    isResident:function(fname,lname,fb_id) {
        return new Promise(function(resolve) {
