@@ -4,7 +4,8 @@
   "description": "MyCampus",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "build": "npm build ."
   },
 
   "author": "Youssef DOUBLI",
