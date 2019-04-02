@@ -13,7 +13,7 @@ const
 
 ////////////////////////////////////////////////////
 //comment
-email_manager.sendMail() ;
+email_manager.sendEmail() ;
 ///////////////////////////////////////////////////
 let ir = manager.isResident("Youssef", "DOUBLI", "5895654698") ;
 ir.then((data) => console.log(data)) ;
