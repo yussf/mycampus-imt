@@ -11,6 +11,5 @@ module.exports = {
               console.log(res);
               client.end();
             });
-          });
        }
 };
