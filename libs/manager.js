@@ -17,8 +17,8 @@ module.exports = {
                   resolve(true) ;
                 }
               }
-              client.end();
             });
+            client.end();
           });
        }
 };
