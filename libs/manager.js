@@ -7,12 +7,11 @@ client.connect();
 module.exports = {
   isResident:function(fname,lname,fb_id) {
       return new Promise(function(resolve) {
-            client.query('SELECT fb_id, fname, lname FROM users', (err, res) => {
-              console.log(fname);
-              console.log(lname);
-              console.log(res.rows);
+            client.query('SELECT fb_id, first_name, last_name FROM users', (err, res) => {
+
               let echo = false ;
               if (res != undefined){
+                console.log(res.rows);
                 for (let row of res.rows) {
                   let o = JSON.parse(JSON.stringify(row)) ;
                   if (o.fname.toLowerCase()==fname.toLowerCase() &
@@ -21,7 +20,6 @@ module.exports = {
                   }
                 }
               }
-
               resolve(echo);
             });
           });
