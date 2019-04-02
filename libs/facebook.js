@@ -9,9 +9,11 @@ module.exports = {
 
   request(curl, function (error, response, body) {
     let json = JSON.parse(body) ;
-    console.log(json.name);
+    //console.log(json.name);
     name = json.first_name;
-
+    lname = json.last_name;
+    console.log(lname);
+    console.log(name);
     response = {
       "text": "Hello "+name+"!"
     }
