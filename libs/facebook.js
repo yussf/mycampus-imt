@@ -20,11 +20,18 @@ module.exports = {
                 res.then((data) => {
                       if (data == true){
                         response = {
-                          "text": "Hello "+name+"!"
+                          "text": "Hello "+name+"! \n What's up today?!"
                         }
                         // Send the response message
-                        module.exports.callSendAPI(sender_psid, response);
+
+                      }else{
+                        response = {
+                          "text": "Hello "+name+"! \n This is your first usage of MyCampus. Thank You for your trust. \n"+
+                          "You only need to confirm your @imt-atlantique.net adress to start using me :). \n"+
+                          "Please enter your email adress"
+                        }
                       }
+                    module.exports.callSendAPI(sender_psid, response);
                   }) ;
           });
               // Create the payload for a basic text message, which
