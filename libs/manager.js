@@ -12,13 +12,14 @@ module.exports = {
               console.log(res.rows);
               console.log(fname);
               console.log(lname);
+              let echo = false ;
               for (let row of res.rows) {
                 let o = JSON.parse(JSON.stringify(row)) ;
                 if (o.fname==fname & o.lname==lname){
-                  //console.log("plopm");
-                  resolve(true) ;
+                  echo = true ;
                 }
               }
+              resolve(echo);
               client.end();
             });
           });
