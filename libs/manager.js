@@ -3,11 +3,10 @@ const client = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: true,
 });
-
+client.connect();
 module.exports = {
   isResident:function(fname,lname,fb_id) {
       return new Promise(function(resolve) {
-            client.connect();
             client.query('SELECT fb_id, fname, lname FROM users', (err, res) => {
               console.log(fname);
               console.log(lname);
@@ -20,7 +19,6 @@ module.exports = {
                 }
               }
               resolve(echo);
-              client.end();
             });
           });
        }
