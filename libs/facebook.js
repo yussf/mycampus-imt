@@ -27,9 +27,9 @@ module.exports = {
 
                       }else{
                         response = {
-                          "text": "Hello "+name+"! \n This is your first usage of MyCampus. Thank You for your trust. \n"+
-                          "You only need to confirm your @imt-atlantique.net adress to start using me :). \n"+
-                          "Please enter your email adress"
+                          "text": "Hello "+name+"! This is your first usage of MyCampus. Thank you for your trust."+
+                          "You only need to confirm your @imt-atlantique.net address to start using me :). \n"+
+                          "Please enter your email address"
                         }
                       }
                     module.exports.callSendAPI(sender_psid, response);
