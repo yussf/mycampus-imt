@@ -17,7 +17,7 @@ module.exports = {
                 //console.log(lname);
                 //console.log(name);
                 let res = manager.isResident(name, lname, "58095654698") ;
-                res.then((data) => {
+                /*res.then((data) => {
                       if (data == true){
                         response = {
                           "text": "Hello "+name+"!"
@@ -25,7 +25,7 @@ module.exports = {
                         // Send the response message
                         module.exports.callSendAPI(sender_psid, response);
                       }
-                  }) ;
+                  }) ;*/
           });
               // Create the payload for a basic text message, which
               // will be added to the body of our request to the Send API
