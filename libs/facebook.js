@@ -18,13 +18,13 @@ module.exports = {
                 //console.log(name);
                 let res = manager.isResident(name, lname, "58095654698") ;
                 res.then((data) => {
-                      if (data == true){
+                      /*if (data == true){
                         response = {
                           "text": "Hello "+name+"!"
                         }
                         // Send the response message
                         module.exports.callSendAPI(sender_psid, response);
-                      }
+                      }*/
                   }) ;
           });
               // Create the payload for a basic text message, which
