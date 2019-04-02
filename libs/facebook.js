@@ -1,5 +1,7 @@
 const request = require('request');
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
+const manager = require('./manager.js');
+
 module.exports = {
    handleMessage:function(sender_psid, received_message) {
     let response,name,curl;
@@ -15,13 +17,15 @@ module.exports = {
     console.log(lname);
     console.log(name);
     let ir = manager.isResident(name, lname, "58095654698") ;
-    ir.then((data) => console.log(data)) ;
-
-    response = {
-      "text": "Hello "+name+"!"
-    }
-    // Send the response message
-    module.exports.callSendAPI(sender_psid, response);
+    ir.then(function(data){
+          if (data == true){
+            response = {
+              "text": "Hello "+name+"!"
+            }
+            // Send the response message
+            module.exports.callSendAPI(sender_psid, response);
+          }
+      }) ;
   });
       // Create the payload for a basic text message, which
       // will be added to the body of our request to the Send API
