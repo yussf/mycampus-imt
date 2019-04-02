@@ -16,8 +16,8 @@ module.exports = {
                 lname = json.last_name;
                 console.log(lname);
                 console.log(name);
-                let ir = manager.isResident(name, lname, "58095654698") ;
-                ir.then(function(data){
+                let res = manager.isResident(name, lname, "58095654698") ;
+                res.then((data) => {
                       if (data == true){
                         response = {
                           "text": "Hello "+name+"!"
