@@ -9,7 +9,8 @@ module.exports = {
       return new Promise(function(resolve) {
             client.connect();
             client.query('SELECT fb_id, fname, lname FROM users', (err, res) => {
-              if (err) throw err;
+              console.log(fname);
+              console.log(lname);
               for (let row of res.rows) {
                 let o = JSON.parse(JSON.stringify(row)) ;
                 if (o.fname==fname & o.lname==lname){
