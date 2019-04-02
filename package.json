@@ -19,6 +19,6 @@
     "uuid": "latest"
   },
   "engines": {
-    "node": "11.9.0"
+    "node": "latest"
   }
 }
