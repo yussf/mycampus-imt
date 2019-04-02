@@ -9,7 +9,7 @@ module.exports = {
       return new Promise(function(resolve) {
             client.connect();
             client.query('SELECT fb_id, fname, lname FROM users', (err, res) => {
-              console.log(res);
+              console.log(res.rows);
               console.log(fname);
               console.log(lname);
               for (let row of res.rows) {
