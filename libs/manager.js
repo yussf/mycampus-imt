@@ -12,13 +12,16 @@ module.exports = {
               console.log(lname);
               console.log(res.rows);
               let echo = false ;
-              for (let row of res.rows) {
-                let o = JSON.parse(JSON.stringify(row)) ;
-                if (o.fname.toLowerCase()==fname.toLowerCase() &
-                            o.lname.toLowerCase()==lname.toLowerCase()){
-                  echo = true ;
+              if (res != undefined){
+                for (let row of res.rows) {
+                  let o = JSON.parse(JSON.stringify(row)) ;
+                  if (o.fname.toLowerCase()==fname.toLowerCase() &
+                              o.lname.toLowerCase()==lname.toLowerCase()){
+                    echo = true ;
+                  }
                 }
               }
+
               resolve(echo);
             });
           });
