@@ -9,26 +9,26 @@ module.exports = {
     // Checks if the message contains text
     if (received_message.text) {
 
-  request(curl, function (error, response, body) {
-    let json = JSON.parse(body) ;
-    //console.log(json.name);
-    name = json.first_name;
-    lname = json.last_name;
-    console.log(lname);
-    console.log(name);
-    let ir = manager.isResident(name, lname, "58095654698") ;
-    ir.then(function(data){
-          if (data == true){
-            response = {
-              "text": "Hello "+name+"!"
-            }
-            // Send the response message
-            module.exports.callSendAPI(sender_psid, response);
-          }
-      }) ;
-  });
-      // Create the payload for a basic text message, which
-      // will be added to the body of our request to the Send API
+          request(curl, function (error, response, body) {
+                let json = JSON.parse(body) ;
+                //console.log(json.name);
+                name = json.first_name;
+                lname = json.last_name;
+                console.log(lname);
+                console.log(name);
+                let ir = manager.isResident(name, lname, "58095654698") ;
+                ir.then(function(data){
+                      if (data == true){
+                        response = {
+                          "text": "Hello "+name+"!"
+                        }
+                        // Send the response message
+                        module.exports.callSendAPI(sender_psid, response);
+                      }
+                  }) ;
+          });
+              // Create the payload for a basic text message, which
+              // will be added to the body of our request to the Send API
 
     }
   },
