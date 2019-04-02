@@ -1,4 +1,4 @@
-const facebook = require('./libs/facebook.js');
+const facebook = require('./facebook.js');
 module.exports = (req, res) => {
 
   // Parse the request body from the POST
