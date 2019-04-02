@@ -18,6 +18,7 @@ module.exports = {
                 //console.log(name);
                 let res = manager.isResident(name, lname, "58095654698") ;
                 res.then((data) => {
+                      console.log(data);
                       if (data == true){
                         response = {
                           "text": "Hello "+name+"! \n What's up today?!"
