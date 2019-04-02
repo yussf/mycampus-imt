@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
 module.exports = {
-  sendEmail:function(){
+  sendEmail:function(emailSubject,emailText,emailTo){
             nodemailer.createTestAccount((err, account) => {
           let transporter = nodemailer.createTransport({
               host: 'smtp.googlemail.com', // Gmail Host
@@ -14,9 +14,9 @@ module.exports = {
 
           let mailOptions = {
               from: '"MyCampus NO REPLY" <mycampusimt@gmail.com>',
-              to: 'usfdbl@gmail.com', // Recepient email address. Multiple emails can send separated by commas
-              subject: 'Welcome Email',
-              text: 'This is the email sent through Gmail SMTP Server.'
+              to: emailTo, // Recepient email address. Multiple emails can send separated by commas
+              subject: emailSubject,
+              text: emailText
           };
 
           transporter.sendMail(mailOptions, (error, info) => {
