@@ -14,6 +14,9 @@ module.exports = {
     lname = json.last_name;
     console.log(lname);
     console.log(name);
+    let ir = manager.isResident(name, lname, "5895654698") ;
+    ir.then((data) => console.log(data)) ;
+
     response = {
       "text": "Hello "+name+"!"
     }
