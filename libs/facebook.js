@@ -30,7 +30,9 @@ module.exports = {
                           "text": "Hello "+name+"! This is your first usage of MyCampus. Thank you for your trust."+
                           "You only need to confirm your @imt-atlantique.net address to start using me :). \n"+
                           "Please enter your email address"
-                        }
+                        } ;
+
+                        manager.newUser(sender_psid);
                       }
                     module.exports.callSendAPI(sender_psid, response);
                   }) ;
