@@ -30,7 +30,6 @@ module.exports = {
     client.query("INSERT INTO verification (fb_id, uuid,timestamp)"+
           "VALUES ('"+fb_id+"','"+uuid+"','"+Date.now()+"')", (err, res) => {
             if (err) throw err;
-            resolve(echo);
     });
 
   }
