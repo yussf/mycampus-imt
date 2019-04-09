@@ -29,7 +29,7 @@ module.exports = (req, res) => {
           client.query("INSERT INTO users(fb_id,first_name,last_name,imt_adresse,status) VALUES($1,$2,$3,$4,$5)", args, (err, res) => {
               if (err) throw err;
               console.log("User added.");
-              res.redirect("https://www.facebook.com") ;
+              //res.redirect("https://www.facebook.com") ;
           });
     }
   });
