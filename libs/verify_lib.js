@@ -31,7 +31,7 @@ module.exports = (req, res) => {
               if (err) throw err;
               console.log("User added.");
               facebook.callSendAPI(userId, {"text":"Your account is now verified. Ask me!"});
-              res.redirect("https://www.facebook.com") ;
+              redirect("https://www.facebook.com") ;
           });
     }
   });
