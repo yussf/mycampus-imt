@@ -1,6 +1,7 @@
 module.exports = (req, res) => {
   const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
   const { Client } = require('pg');
+  const facebook = require('./facebook.js');
   const client = new Client({
     connectionString: process.env.DATABASE_URL,
     ssl: true,
@@ -29,6 +30,7 @@ module.exports = (req, res) => {
           client.query("INSERT INTO users(fb_id,first_name,last_name,imt_adresse,status) VALUES($1,$2,$3,$4,$5)", args, (err, res) => {
               if (err) throw err;
               console.log("User added.");
+              facebook.callSendAPI(userId,"Your account is now verified. Ask me!");
               //res.redirect("https://www.facebook.com") ;
           });
     }
