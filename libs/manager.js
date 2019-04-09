@@ -25,10 +25,10 @@ module.exports = {
             });
           });
        },
-  newUser:function(fb_id){
+  newUser:function(fb_id,imt_address){
     let uuid = uuidv1() ;
-    client.query("INSERT INTO verification (fb_id, uuid,timestamp)"+
-          "VALUES ('"+fb_id+"','"+uuid+"','"+Date.now()+"')", (err, res) => {
+    client.query("INSERT INTO verification (fb_id, uuid,timestamp, imt_address)"+
+          "VALUES ('"+fb_id+"','"+uuid+"','"+Date.now()+"','"+imt_address+"')", (err, res) => {
             if (err) throw err;
     });
 

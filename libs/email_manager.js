@@ -13,7 +13,7 @@ module.exports = {
           });
 
           let mailOptions = {
-              from: '"MyCampus NO REPLY" <mycampusimt@gmail.com>',
+              from: '"MyCampus" <mycampusimt@gmail.com>',
               to: emailTo, // Recepient email address. Multiple emails can send separated by commas
               subject: emailSubject,
               text: emailText

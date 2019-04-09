@@ -8,7 +8,7 @@ module.exports = {
     curl = "https://graph.facebook.com/v3.2/"+sender_psid+"?fields=id%2Cname%2Cfirst_name%2Clast_name&access_token="+PAGE_ACCESS_TOKEN
     // Checks if the message contains text
     if (received_message.text) {
-
+          let msg_text = received_message.text ;
           request(curl, function (error, response, body) {
                 let json = JSON.parse(body) ;
                 //console.log(json.name);
@@ -16,26 +16,31 @@ module.exports = {
                 lname = json.last_name;
                 //console.log(lname);
                 //console.log(name);
-                let res = manager.isResident(name, lname, "58095654698") ;
-                res.then((data) => {
-                      console.log(data);
-                      if (data == true){
-                        response = {
-                          "text": "Hello "+name+"! \n What's up today?!"
-                        }
-                        // Send the response message
+                if ( msg_text == "Hi"){
+                    let res = manager.isResident(name, lname, "58095654698") ;
+                    res.then((data) => {
+                          console.log(data);
+                          if (data == true){
+                            response = {
+                              "text": "Hello "+name+"! \n What's up today?!"
+                            }
+                            // Send the response message
 
-                      }else{
-                        response = {
-                          "text": "Hello "+name+"! This is your first usage of MyCampus. Thank you for your trust."+
-                          "You only need to confirm your @imt-atlantique.net address to start using me :). \n"+
-                          "Please enter your email address"
-                        } ;
+                          }else{
+                            response = {
+                              "text": "Hello "+name+"! This is your first usage of MyCampus. Thank you for your trust."+
+                              "You only need to confirm your @imt-atlantique.net address to start using me :). \n"+
+                              "Please enter your email address"
+                            } ;
 
-                        manager.newUser(sender_psid);
-                      }
-                    module.exports.callSendAPI(sender_psid, response);
-                  }) ;
+
+                          }
+                        module.exports.callSendAPI(sender_psid, response);
+                      }) ;
+
+                    }else if (msg_text.indexOf("@imt-atlantique.net") > 1) {
+                      manager.newUser(sender_psid,msg_text);
+                    }
           });
               // Create the payload for a basic text message, which
               // will be added to the body of our request to the Send API
