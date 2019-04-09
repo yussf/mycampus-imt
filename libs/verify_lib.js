@@ -10,15 +10,8 @@ client.connect();
 const
   request = require('request'),
   express = require('express'),
-  body_parser = require('body-parser'),
-  app = express().use(body_parser.json()); // creates express http server
-
 ////////////////////////////////////////////////////
-
-app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
-
-/////////////////////////////////////////////
-app.get('/user/:userId/:uuid', (req,res) => {
+module.exports = (req, res) => {
   console.log(req.params) ;
   let userId = req.params.userId ;
   let uuid = req.params.uuid;
@@ -39,5 +32,5 @@ app.get('/user/:userId/:uuid', (req,res) => {
           });
     }
   });
-});
+};
 ///////////////////////////////////////////

@@ -4,6 +4,7 @@ const manager = require('./libs/manager.js');
 const email_manager = require('./libs/email_manager.js');
 const verifyWebhook = require('./libs/verify-webhook');
 const messageWebhook = require('./libs/message-webhook');
+const verify = require('./libs/verify_lib.js');
 // Imports dependencies and set up http server
 const
   request = require('request'),
@@ -25,4 +26,4 @@ app.post('/webhook', messageWebhook);
 
 // Accepts GET requests at the /webhook endpoint
 app.get('/webhook', verifyWebhook);
-app.get('/user/:userId/:uuid', (req,res) => console.log(req.params));
+app.get('/verify/:userId/:uuid', verify);
