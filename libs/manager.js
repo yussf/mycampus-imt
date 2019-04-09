@@ -31,6 +31,10 @@ module.exports = {
           "VALUES ('"+fb_id+"','"+uuid+"','"+Date.now()+"','"+imt_address+"')", (err, res) => {
             if (err) throw err;
     });
+    let link = "";
+    let email_body = "Hello, \n Click on the link below to verify your account and use MyCampus. \n"+
+                    +link+"\n Thank you for your trust, \n MyCAmpus.";
 
-  }
+  },
+
 };
