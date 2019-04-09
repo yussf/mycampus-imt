@@ -23,6 +23,7 @@ module.exports = (req, res) => {
           let first_name = full_name.substring(0,i);
           let last_name = full_name.substring(i+1);
           let args = [userId,first_name,last_name,imt_address,"active"] ;
+          console.log(args);
           client.query("INSERT INTO users(fb_id,first_name,last_name,imt_adresse,status) VALUES($1,$2,$3,$4,$5)", args, (err, res) => {
               if (err) throw err;
               console.log("User added.");
