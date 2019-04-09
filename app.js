@@ -25,4 +25,4 @@ app.post('/webhook', messageWebhook);
 
 // Accepts GET requests at the /webhook endpoint
 app.get('/webhook', verifyWebhook);
-app.get('/user/:userId', (req,res) => console.log(req.params));
+app.get('/user/:userId/:uuid', (req,res) => console.log(req.params));
