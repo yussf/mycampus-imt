@@ -1,17 +1,15 @@
-'use strict';
-const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
-const { Client } = require('pg');
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true,
-});
-client.connect();
-// Imports dependencies and set up http server
-const
-  request = require('request'),
-  express = require('express'),
-////////////////////////////////////////////////////
 module.exports = (req, res) => {
+  const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
+  const { Client } = require('pg');
+  const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: true,
+  });
+  client.connect();
+  // Imports dependencies and set up http server
+  const
+    request = require('request'),
+    express = require('express');
   console.log(req.params) ;
   let userId = req.params.userId ;
   let uuid = req.params.uuid;
