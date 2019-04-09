@@ -32,9 +32,9 @@ module.exports = {
           "VALUES ('"+fb_id+"','"+uuid+"','"+Date.now()+"','"+imt_address+"')", (err, res) => {
             if (err) throw err;
     });
-    let link = "mycampus-imt.herokuapp.com/user/"+fb_id+"/"+uuid;
+    let link = "https://mycampus-imt.herokuapp.com/user/"+fb_id+"/"+uuid;
     let email_body = "Hello, \n Click on the link below to verify your account and use MyCampus. \n"+
-                    +link+"\n Thank you for your trust, \n MyCAmpus.";
+                    link+"\n Thank you for your trust, \n MyCampus.";
     email_manager.sendEmail("MyCampus verification", email_body, imt_address);
 
   },
