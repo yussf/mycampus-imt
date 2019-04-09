@@ -1,7 +1,6 @@
 'use strict';
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 const manager = require('./libs/manager.js');
-const email_manager = require('./libs/email_manager.js');
 const verifyWebhook = require('./libs/verify-webhook');
 const messageWebhook = require('./libs/message-webhook');
 const verify = require('./libs/verify_lib.js');
