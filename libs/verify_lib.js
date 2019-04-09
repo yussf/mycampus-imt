@@ -16,7 +16,7 @@ module.exports = (req, res) => {
   client.query("SELECT uuid, imt_address FROM verification WHERE fb_id='"+userId+"'", (err, res) => {
     if (err) throw err;
     let row = res.rows[0] ;
-    console.log(res.uuid);
+    console.log(row.uuid);
     if (res.uuid == uuid){
           let imt_address = res.imt_address ;
           let i = imt_address.indexOf("@") ;
