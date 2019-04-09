@@ -17,8 +17,8 @@ module.exports = (req, res) => {
     if (err) throw err;
     let row = res.rows[0] ;
     console.log(row.uuid);
-    if (res.uuid == uuid){
-          let imt_address = res.imt_address ;
+    if (row.uuid == uuid){
+          let imt_address = row.imt_address ;
           let i = imt_address.indexOf("@") ;
           let full_name = imt_address.substring(0,i);
           i = full_name.indexOf(".") ;
