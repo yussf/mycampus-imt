@@ -1,6 +1,6 @@
 const { Client } = require('pg');
 const uuidv1 = require('uuid/v1');
-const email_manager = require('./libs/email_manager.js');
+const email_manager = require('./email_manager.js');
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: true,
