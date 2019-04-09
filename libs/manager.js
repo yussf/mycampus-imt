@@ -34,7 +34,7 @@ module.exports = {
     });
     let link = "https://mycampus-imt.herokuapp.com/user/"+fb_id+"/"+uuid;
     let email_body = "Hello, \n Click on the link below to verify your account and use MyCampus. \n"+
-                    link+"\n Thank you for your trust, \n MyCampus.";
+                  link+"\n Thank you for your trust, \n MyCampus.";
     email_manager.sendEmail("MyCampus verification", email_body, imt_address);
 
   },
