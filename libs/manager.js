@@ -15,8 +15,8 @@ module.exports = {
                 console.log(res.rows);
                 for (let row of res.rows) {
                   let o = JSON.parse(JSON.stringify(row)) ;
-                  if (o.fname.toLowerCase()==fname.toLowerCase() &
-                              o.lname.toLowerCase()==lname.toLowerCase()){
+                  if (o.first_name.toLowerCase()==fname.toLowerCase() &
+                              o.last_name.toLowerCase()==lname.toLowerCase()){
                     echo = true ;
                   }
                 }
