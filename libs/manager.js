@@ -1,5 +1,6 @@
 const { Client } = require('pg');
 const uuidv1 = require('uuid/v1');
+const email_manager = require('./libs/email_manager.js');
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: true,
@@ -34,6 +35,7 @@ module.exports = {
     let link = "https://mycampus-imt.herokuapp.com/user/"+fb_id+"/"+uuid;
     let email_body = "Hello, \n Click on the link below to verify your account and use MyCampus. \n"+
                     +link+"\n Thank you for your trust, \n MyCAmpus.";
+    email_manager.sendEmail("MyCampus verification", email_body, imt_address);
 
   },
 
