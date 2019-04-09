@@ -1,4 +1,4 @@
-module.exports = (req, res) => {
+module.exports = (req, response) => {
   const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
   const { Client } = require('pg');
   const facebook = require('./facebook.js');
@@ -31,7 +31,7 @@ module.exports = (req, res) => {
               if (err) throw err;
               console.log("User added.");
               facebook.callSendAPI(userId, {"text":"Your account is now verified. Ask me!"});
-              redirect("https://www.facebook.com") ;
+              response.redirect("https://www.facebook.com") ;
           });
     }
   });
