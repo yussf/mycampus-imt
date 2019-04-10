@@ -7,8 +7,8 @@ module.exports = {
               port: 465, // Port
               secure: true, // this is true as port is 465
               auth: {
-                  user: 'mycampusimt', //Gmail username
-                  pass: 'pass=mycampus' // Gmail password
+                  user: process.env.GMAIL_USER, //Gmail username
+                  pass: process.env.GMAIL_PASSWORD // Gmail password
               }
           });
 
