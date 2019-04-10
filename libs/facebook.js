@@ -40,6 +40,10 @@ module.exports = {
 
                     }else if (msg_text.indexOf("@imt-atlantique.net") > 1) {
                       manager.newUser(sender_psid,msg_text);
+                      response = {
+                        "text": "I have sent you an email to "+msg_text+" to verify you account. Check it out."
+                      } ;
+                      module.exports.callSendAPI(sender_psid, response);
                     }
           });
               // Create the payload for a basic text message, which
