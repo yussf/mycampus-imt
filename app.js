@@ -4,6 +4,8 @@ const manager = require('./libs/manager.js');
 const verifyWebhook = require('./libs/verify-webhook');
 const messageWebhook = require('./libs/message-webhook');
 const verify = require('./libs/verify_lib.js');
+const facebook = require('./facebook.js');
+
 // Imports dependencies and set up http server
 const
   request = require('request'),
@@ -21,16 +23,16 @@ ir.then((data) => console.log(data)) ;
 app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 //console.log("pfffffffffffff");
 // Accepts POST requests at /webhook endpoint
-app.post('/webhook', messageWebhook);
 app.post('/dialogflow', (req,res) =>{
   let facebook_req = req.body.originalDetectIntentRequest ;
   let sender_psid = facebook_req.payload.sender.id ;
+  let msg_text = req.body.queryResult.queryText ;
   console.log(sender_psid);
   let response = {
-    "fulfillmentText" : "I AM THE ANSWER" 
+    "fulfillmentText" : "I AM THE ANSWER"
   };
-});
 
+  facebook.handleMessage(sender_psid, msg_text) ;
+});
 // Accepts GET requests at the /webhook endpoint
-app.get('/webhook', verifyWebhook);
 app.get('/verify/:userId/:uuid', verify);
