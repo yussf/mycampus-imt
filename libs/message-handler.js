@@ -36,5 +36,5 @@ module.exports = (req, res) => {
       }
 
       res.setHeader('Content-Type','applicaiton/json');
-      res.send(JSON.stringify(response));
+      res.send(response);
 };
