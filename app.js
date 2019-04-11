@@ -23,9 +23,12 @@ app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 // Accepts POST requests at /webhook endpoint
 app.post('/webhook', messageWebhook);
 app.post('/dialogflow', (req,res) =>{
-  console.log(req.body.originalDetectIntentRequest);
-  console.log("/////////////////////////////////////////");
-  console.log(res.body.originalDetectIntentRequest);
+  let facebook_req = req.body.originalDetectIntentRequest ;
+  let sender_psid = facebook_req.payload.sender.id ;
+  console.log(sender_psid);
+  let response = {
+    "fulfillmentText" : "I AM THE ANSWER" 
+  };
 });
 
 // Accepts GET requests at the /webhook endpoint
