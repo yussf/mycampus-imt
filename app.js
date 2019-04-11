@@ -23,9 +23,9 @@ app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 // Accepts POST requests at /webhook endpoint
 app.post('/webhook', messageWebhook);
 app.post('/dialogflow', (req,res) =>{
-  console.log(req.originalDetectIntentRequest);
+  console.log(req.body.originalDetectIntentRequest);
   console.log("/////////////////////////////////////////");
-  console.log(res.originalDetectIntentRequest);
+  console.log(res.body.originalDetectIntentRequest);
 });
 
 // Accepts GET requests at the /webhook endpoint
