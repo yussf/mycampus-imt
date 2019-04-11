@@ -7,19 +7,16 @@ const client = new Client({
 });
 client.connect();
 module.exports = {
-  isResident:function(fname,lname,fb_id) {
+  isResident:function(fb_id) {
       return new Promise(function(resolve) {
-            client.query('SELECT fb_id, first_name, last_name FROM users', (err, res) => {
+            client.query("SELECT first_name, last_name, status FROM users WHERE fb_id='"+fb_id+"'", (err, res) => {
               if (err) throw err;
               let echo = false ;
               if (res != undefined){
-                console.log(res.rows);
-                for (let row of res.rows) {
-                  let o = JSON.parse(JSON.stringify(row)) ;
-                  if (o.first_name.toLowerCase()==fname.toLowerCase() &
-                              o.last_name.toLowerCase()==lname.toLowerCase()){
-                    echo = true ;
-                  }
+                let row = res.rows[0] ;
+                let o = JSON.parse(JSON.stringify(row)) ;
+                if (o.status == "active"){
+                  let echo = true
                 }
               }
               resolve(echo);
