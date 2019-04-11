@@ -10,7 +10,7 @@ module.exports = (req, res) => {
   //facebook.handleMessage(sender_psid, msg_text) ;
 
   if ( msg_text == "Hi"){
-      let res = manager.isResident("58095654698") ;
+      let res = manager.isResident(sender_psid) ;
       res.then((data) => {
             console.log(data);
             if (data == true){
