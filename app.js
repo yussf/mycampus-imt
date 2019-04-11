@@ -28,6 +28,7 @@ app.post('/dialogflow', (req,res) =>{
   let sender_psid = facebook_req.payload.sender.id ;
   let msg_text = req.body.queryResult.queryText ;
   console.log(sender_psid);
+  console.log(res);
   let response = {
     "fulfillmentText" : "I AM THE ANSWER"
   };
