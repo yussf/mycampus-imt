@@ -13,6 +13,8 @@ module.exports = {
               if (err) throw err;
               let echo = false ;
               if (res != undefined){
+                console.log(res);
+                console.log(res.rows);
                 let row = res.rows[0] ;
                 let o = JSON.parse(JSON.stringify(row)) ;
                 if (o.status == "active"){
