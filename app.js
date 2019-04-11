@@ -4,7 +4,7 @@ const manager = require('./libs/manager.js');
 const verifyWebhook = require('./libs/verify-webhook');
 const messageWebhook = require('./libs/message-webhook');
 const verify = require('./libs/verify_lib.js');
-const facebook = require('./facebook.js');
+const facebook = require('./libs/facebook.js');
 
 // Imports dependencies and set up http server
 const
