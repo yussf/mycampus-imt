@@ -29,7 +29,7 @@ app.post('/dialogflow', (req,res) =>{
   let msg_text = req.body.queryResult.queryText ;
   console.log(sender_psid);
   console.log(res);
-  res.body.QueryResult["fulfillment_text"] = "I AM THE ANSWER" ;
+  req.body.QueryResult["fulfillment_text"] = "I AM THE ANSWER" ;
 
   //facebook.handleMessage(sender_psid, msg_text) ;
 });
