@@ -29,11 +29,9 @@ app.post('/dialogflow', (req,res) =>{
   let msg_text = req.body.queryResult.queryText ;
   console.log(sender_psid);
   console.log(res);
-  let response = {
-    "fulfillmentText" : "I AM THE ANSWER"
-  };
+  res.body.QueryResult["fulfillment_text"] = "I AM THE ANSWER" ;
 
-  facebook.handleMessage(sender_psid, msg_text) ;
+  //facebook.handleMessage(sender_psid, msg_text) ;
 });
 // Accepts GET requests at the /webhook endpoint
 app.get('/verify/:userId/:uuid', verify);
