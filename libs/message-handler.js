@@ -6,6 +6,7 @@ module.exports = (req, res) => {
   let facebook_req = req.body.originalDetectIntentRequest ;
   let sender_psid = facebook_req.payload.sender.id ;
   let msg_text = req.body.queryResult.queryText ;
+
   //console.log(sender_psid);
   //console.log(res);
 
@@ -15,6 +16,7 @@ module.exports = (req, res) => {
       let promise = manager.isResident(sender_psid);
       promise.then((data) => {
             console.log(data);
+            
             if (data == true){
               response = {
                 "fulfillmentText": "Hello "+name+"! \n What's up today?!"
@@ -27,6 +29,9 @@ module.exports = (req, res) => {
               } ;
             }
 
+            res.setHeader('Content-Type','applicaiton/json');
+            res.send(response);
+
         }) ;
 
       }else if (msg_text.indexOf("@imt-atlantique.net") > 1) {
@@ -34,9 +39,9 @@ module.exports = (req, res) => {
         response = {
           "fulfillmentText": "I have sent you an email to "+msg_text+" to verify your account. Check it out."
         } ;
-
+        res.setHeader('Content-Type','applicaiton/json');
+        res.send(response);
       }
 
-      res.setHeader('Content-Type','applicaiton/json');
-      res.send(response);
+
 };
