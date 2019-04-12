@@ -12,8 +12,8 @@ module.exports = (req, res) => {
   //facebook.handleMessage(sender_psid, msg_text) ;
 
   if ( msg_text == "Hi"){
-      manager.isResident(sender_psid)
-      .then((data) => {
+      let promise = manager.isResident(sender_psid);
+      promise.then((data) => {
             console.log(data);
             if (data == true){
               response = {
