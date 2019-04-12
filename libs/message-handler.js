@@ -16,7 +16,7 @@ module.exports = (req, res) => {
       let promise = manager.isResident(sender_psid);
       promise.then((data) => {
             console.log(data);
-            console.log("heeeere");
+            console.log(sender_psid);
             if (data == true){
               response = {
                 "fulfillmentText": "Hello "+name+"! \n What's up today?!"
