@@ -1,4 +1,6 @@
 const facebook = require('./facebook.js');
+const manager = require('./manager.js');
+
 module.exports = (req, res) => {
 
   let facebook_req = req.body.originalDetectIntentRequest ;
@@ -10,8 +12,8 @@ module.exports = (req, res) => {
   //facebook.handleMessage(sender_psid, msg_text) ;
 
   if ( msg_text == "Hi"){
-      let res = manager.isResident(sender_psid) ;
-      res.then((data) => {
+      manager.isResident(sender_psid)
+      .then((data) => {
             console.log(data);
             if (data == true){
               response = {
