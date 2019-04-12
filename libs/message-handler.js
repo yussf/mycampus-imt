@@ -18,7 +18,7 @@ module.exports = (req, res) => {
             if (data == true){
               response = {
                 "fulfillmentText": "Hello "+name+"! \n What's up today?!"
-              }
+              };
             }else{
               response = {
                 "fulfillmentText": "Hello "+name+"! This is your first usage of MyCampus. Thank you for your trust."+
@@ -27,8 +27,7 @@ module.exports = (req, res) => {
               } ;
             }
 
-        })
-        .catch((err) => console.log(err)) ;
+        }) ;
 
       }else if (msg_text.indexOf("@imt-atlantique.net") > 1) {
         manager.newUser(sender_psid,msg_text);
