@@ -13,11 +13,6 @@ const
   body_parser = require('body-parser'),
   app = express().use(body_parser.json()); // creates express http server
 
-////////////////////////////////////////////////////
-//comment
-///////////////////////////////////////////////////
-let ir = manager.isResident("Youssef", "DOUBLI", "5895654698") ;
-ir.then((data) => console.log(data)) ;
 /////////////////////////////////////////////////
 // Sets server port and logs message on success
 app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
