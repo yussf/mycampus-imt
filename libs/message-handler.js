@@ -1,6 +1,5 @@
 const facebook = require('./facebook.js');
 const manager = require('./manager.js');
-const emailExistence = require("email-existence");
 module.exports = (req, res) => {
   let facebook_req = req.body.originalDetectIntentRequest ;
   let sender_psid = facebook_req.payload.data.sender.id ;
