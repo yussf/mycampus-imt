@@ -17,7 +17,7 @@ module.exports = (req, res) => {
             console.log(sender_psid);
             if (data == true){
               response = {
-                "fulfillmentText": "Hello "+name+"! \n What's up today?!"
+                "fulfillmentText": "Hello! \n What's up today?!"
               };
             }else{
               response = {
