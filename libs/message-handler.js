@@ -10,6 +10,7 @@ module.exports = (req, res) => {
 
   switch (intent) {
     case "smalltalk.greetings.hello":
+          console.log(intent);
           manager.isResident(sender_psid)
           .then((data) => {
                 if (data == true){
@@ -23,6 +24,7 @@ module.exports = (req, res) => {
             .catch((err) => console.log(err)) ;
       break;
     case "takeMyEmail" :
+      console.log(intent);
       console.log(req.body);
       //manager.newUser(sender_psid,msg_text);
       response = {
