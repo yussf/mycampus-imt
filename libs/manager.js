@@ -49,7 +49,7 @@ module.exports = {
     let uuid = uuidv1() ;
     args = [fb_id,uuid,Date.now(),imt_address];
     client.query("INSERT INTO verification (fb_id, uuid, timestamp, imt_address) VALUES ($1,$2,$3,$4) "+
-          "CONFLICT (fb_id) DO UPDATE SET uuid=$2, timestamp=$3, imt_address=$4;", (err, res) => {
+          "ON CONFLICT (fb_id) DO UPDATE SET uuid=$2, timestamp=$3, imt_address=$4;", (err, res) => {
             if (err) throw err;
     });
     let link = "https://mycampus-imt.herokuapp.com/verify/"+fb_id+"/"+uuid;
