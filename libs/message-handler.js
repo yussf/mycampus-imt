@@ -15,11 +15,18 @@ module.exports = (req, res) => {
             console.log(sender_psid);
             if (data == true){
               response = {
-                "followupEventInput": {"name": "smalltalk.greetings.hello"}
+                "followupEventInput": {
+                        "name": "smalltalk.greetings.hello",
+                        "languageCode": "en-US",
+                      }
               } ;
             }else{
               response = {
-                "followupEventInput": {"name": "ask_for_email"}
+                "followupEventInput": {
+                        "name": "smalltalk.greetings.hello",
+                        "languageCode": "en-US",
+                      }
+
               } ;
             }
 
