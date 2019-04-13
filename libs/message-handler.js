@@ -2,7 +2,7 @@ const facebook = require('./facebook.js');
 const manager = require('./manager.js');
 const emailExistence = require("email-existence");
 module.exports = (req, res) => {
-  emailExistence.check('email@domain.com', function(error, response){
+  emailExistence.check('emdddddddzeqail@domain.com', function(error, response){
         console.log('res: '+response);
     });
   emailExistence.check('youssef.doubli@gmail.com', function(error, response){
