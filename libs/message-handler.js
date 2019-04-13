@@ -6,7 +6,10 @@ module.exports = (req, res) => {
   let facebook_req = req.body.originalDetectIntentRequest ;
   let sender_psid = facebook_req.payload.data.sender.id ;
   let msg_text = req.body.queryResult.queryText ;
-  console.log(req.body);
+  let intent = req.body.queryResult.intent.name ;
+  let res_msgs = req.body.queryResult.fulfillmentMessages;
+  console.log(res_msgs);
+  console.log(intent);
 
   if ( msg_text == "Hi"){
       let promise = manager.isResident(sender_psid);
