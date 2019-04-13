@@ -6,6 +6,7 @@ module.exports = (req, res) => {
   let intent = req.body.queryResult.intent.displayName ;
   console.log(intent);
   switch (intent) {
+    //test vcode
     case "smalltalk.greetings.hello":
           //console.log(intent);
           manager.isIdActive(sender_psid)
