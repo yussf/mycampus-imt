@@ -17,7 +17,7 @@ module.exports = {
                 console.log(res.rows);
                 let row = res.rows[0] ;
                 let o = JSON.parse(JSON.stringify(row)) ;
-                if (o.status == "active") let echo = true ;
+                if (o.status == "active")  echo = true ;
 
               }
               resolve(echo);
