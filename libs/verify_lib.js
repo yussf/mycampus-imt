@@ -2,6 +2,7 @@ module.exports = (req, response) => {
   const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
   const { Client } = require('pg');
   const facebook = require('./facebook.js');
+  const manager = require('./manager.js');
   const client = new Client({
     connectionString: process.env.DATABASE_URL,
     ssl: true,
