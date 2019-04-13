@@ -15,6 +15,7 @@ module.exports = {
               let echo = false ;
               if (res != undefined & res.rows != []){
                 //console.log(res);
+                console.log("///////////////");
                 console.log(res.rows);
                 let row = res.rows[0] ;
                 let o = JSON.parse(JSON.stringify(row)) ;
