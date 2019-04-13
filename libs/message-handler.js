@@ -1,7 +1,7 @@
 const manager = require('./manager.js');
 module.exports = (req, res) => {
   let facebook_req = req.body.originalDetectIntentRequest ;
-  let sender_psid = facebook_req.payload.data.sender.id ;
+  //let sender_psid = facebook_req.payload.data.sender.id ;
   let intent = req.body.queryResult.intent.displayName ;
   console.log(intent);
   switch (intent) {
