@@ -2,7 +2,7 @@ const facebook = require('./facebook.js');
 const manager = require('./manager.js');
 const validator = require("email-validator");
 module.exports = (req, res) => {
-  let a = validator.validate("test@email.com");
+  let a = validator.validate("zzzzzzzzzzz@email.com");
   let b = validator.validate("youssef.doubli@gmail.com");
   console.log(a);
   console.log(b);
