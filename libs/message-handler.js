@@ -9,7 +9,7 @@ module.exports = (req, res) => {
   switch (intent) {
     case "smalltalk.greetings.hello":
           console.log(intent);
-          manager.isResident(sender_psid)
+          manager.isIdActive(sender_psid)
           .then((data) => {
                 if (data == true){
                   response = {} ;
@@ -22,15 +22,23 @@ module.exports = (req, res) => {
             .catch((err) => console.log(err)) ;
       break;
     case "takeMyEmail" :
-      console.log(intent);
-      console.log(req.body);
       let email = req.body.queryResult.parameters.email ;
-      console.log(email);
-      manager.newUser(sender_psid,email);
-      response = {
-        "fulfillmentText": "I have sent you an email to "+email+" to verify your account. Check it out."
-      } ;
-      res.send(response);
+      manaser.isEmailActive(email)
+      .then((data) => {
+        if (data){
+          res.send({
+            "fulfillmentText": "Your email is already verified. Go ahead and ask me!"
+          });
+        }else {
+          manager.newUser(sender_psid,email);
+          response = {
+            "fulfillmentText": "I have sent you an email to "+email+" to verify your account. Check it out."
+          } ;
+          res.send(response);
+        }
+      })
+      .catch((err) => console.log(err)) ;
+
       break;
     default: res.send({}) ;
 

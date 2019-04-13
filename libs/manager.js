@@ -7,7 +7,7 @@ const client = new Client({
 });
 client.connect();
 module.exports = {
-  isResident:function(fb_id) {
+  isIdActive:function(fb_id) {
       return new Promise(function(resolve) {
             client.query("SELECT status FROM users WHERE fb_id='"+fb_id+"'", (err, res) => {
               //console.log(res);
@@ -22,6 +22,21 @@ module.exports = {
             });
           });
        },
+   isEmailActive:function(email) {
+       return new Promise(function(resolve) {
+             client.query("SELECT status FROM users WHERE imt_adresse='"+email+"'", (err, res) => {
+               //console.log(res);
+               if (err) throw err;
+               let echo = false ;
+               if (res != undefined && res.rowCount > 0){
+                 let row = res.rows[0] ;
+                 let o = JSON.parse(JSON.stringify(row)) ;
+                 if (o.status == "active")  echo = true ;
+               }
+               resolve(echo);
+             });
+           });
+        },
   newUser:function(fb_id,imt_address){
     let uuid = uuidv1() ;
     client.query("INSERT INTO verification (fb_id, uuid,timestamp, imt_address)"+
