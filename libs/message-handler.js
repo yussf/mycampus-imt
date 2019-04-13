@@ -1,13 +1,12 @@
 const manager = require('./manager.js');
 module.exports = (req, res) => {
   let facebook_req = req.body.originalDetectIntentRequest ;
-  //let sender_psid = facebook_req.payload.data.sender.id ;
+  let sender_psid = facebook_req.payload.data.sender.id ;
   let intent = req.body.queryResult.intent.displayName ;
   console.log(intent);
   switch (intent) {
     case "smalltalk.greetings.hello":
           console.log(intent);
-          let sender_psid = facebook_req.payload.data.sender.id ;
           manager.isIdActive(sender_psid)
           .then((data) => {
                 if (!(data)){
@@ -23,7 +22,6 @@ module.exports = (req, res) => {
       break;
     case "takeMyEmail" :
       let email = req.body.queryResult.parameters.email ;
-      let sender_psid = facebook_req.payload.data.sender.id ;
       manager.isIdActive(sender_psid)
       .then((data) => {
         if (data){
