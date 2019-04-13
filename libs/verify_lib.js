@@ -19,7 +19,7 @@ module.exports = (req, response) => {
     let row = res.rows[0] ;
     console.log(row.uuid);
     if (row.uuid == uuid){
-      //// TODO: 
+      //// TODO:
           let imt_address = row.imt_address ;
           let i = imt_address.indexOf("@") ;
           let full_name = imt_address.substring(0,i);
@@ -30,6 +30,7 @@ module.exports = (req, response) => {
           console.log(args);
           client.query("INSERT INTO users(fb_id,first_name,last_name,imt_adresse,status) VALUES($1,$2,$3,$4,$5)", args, (err, res) => {
               if (err) throw err;
+              client.query("DELETE FROM verification WHERE fb_id='"+userId+"'") ;
               console.log("User added.");
               facebook.callSendAPI(userId, {"text":"Your account is now verified. Ask me!"});
               response.redirect("https://www.facebook.com") ;
