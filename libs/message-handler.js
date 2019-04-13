@@ -8,15 +8,16 @@ module.exports = (req, res) => {
   console.log(intent);
   switch (intent) {
     case "smalltalk.greetings.hello":
-          console.log(intent);
+          //console.log(intent);
           manager.isIdActive(sender_psid)
           .then((data) => {
-                if (data == true){
-                  response = {} ;
-                }else{
-                  response = {} ;
+                if (!(data)){
+                  res.send({
+                    "fulfillmentText": "Hello there! This is your first time talking to me. Please give me your @imt-atlantique.net address to verify your account. Thanks for your trust!"
+                  });
+                }else {
+                  res.send({}) ;
                 }
-                res.send(response);
 
             })
             .catch((err) => console.log(err)) ;
