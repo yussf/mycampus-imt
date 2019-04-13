@@ -33,7 +33,7 @@ module.exports = (req, res) => {
             res.send(response);
 
         }) ;
-      promise.catch((err) => {console.log(err);}) ;
+      promise.catch((err) => console.log(err)) ;
 
       }else if (msg_text.indexOf("@imt-atlantique.net") > 1) {
         manager.newUser(sender_psid,msg_text);
