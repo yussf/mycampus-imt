@@ -8,8 +8,6 @@ module.exports = (req, res) => {
   let msg_text = req.body.queryResult.queryText ;
 
 
-  //facebook.handleMessage(sender_psid, msg_text) ;
-
   if ( msg_text == "Hi"){
       let promise = manager.isResident(sender_psid);
       promise.then((data) => {
@@ -17,13 +15,11 @@ module.exports = (req, res) => {
             console.log(sender_psid);
             if (data == true){
               response = {
-                "fulfillmentText": "Hello! \n What's up today?!"
-              };
+                "followupEventInput": {"name": "smalltalk.greetings.hello"}
+              } ;
             }else{
               response = {
-                "fulfillmentText": "Hello! This is your first usage of MyCampus. Thank you for your trust."+
-                "You only need to confirm your @imt-atlantique.net address to start using me :). \n"+
-                "Please enter your email address"
+                "followupEventInput": {"name": "ask_for_email"}
               } ;
             }
 
