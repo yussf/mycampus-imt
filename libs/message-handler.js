@@ -1,4 +1,3 @@
-const facebook = require('./facebook.js');
 const manager = require('./manager.js');
 module.exports = (req, res) => {
   let facebook_req = req.body.originalDetectIntentRequest ;
@@ -6,9 +5,8 @@ module.exports = (req, res) => {
   let intent = req.body.queryResult.intent.displayName ;
   console.log(intent);
   switch (intent) {
-    //test vcode
     case "smalltalk.greetings.hello":
-          //console.log(intent);
+          console.log(intent);
           manager.isIdActive(sender_psid)
           .then((data) => {
                 if (!(data)){

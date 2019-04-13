@@ -11,11 +11,8 @@ module.exports = {
           let msg_text = received_message.text ;
           request(curl, function (error, response, body) {
                 let json = JSON.parse(body) ;
-                //console.log(json.name);
                 name = json.first_name;
                 lname = json.last_name;
-                //console.log(lname);
-                //console.log(name);
                 if ( msg_text == "Hi"){
                     let res = manager.isResident(name, lname, "58095654698") ;
                     res.then((data) => {
@@ -32,8 +29,6 @@ module.exports = {
                               "You only need to confirm your @imt-atlantique.net address to start using me :). \n"+
                               "Please enter your email address"
                             } ;
-
-
                           }
                         module.exports.callSendAPI(sender_psid, response);
                       }) ;

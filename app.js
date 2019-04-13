@@ -1,7 +1,6 @@
 'use strict';
 const messageHandler = require('./libs/message-handler');
 const scrapper = require('./libs/scrapper.js');
-
 const verify = require('./libs/verify_lib.js');
 // Imports dependencies and set up http server
 const
