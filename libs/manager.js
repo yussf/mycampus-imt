@@ -48,8 +48,8 @@ module.exports = {
   newUser:function(fb_id,imt_address){
     let uuid = uuidv1() ;
     args = [fb_id,uuid,Date.now(),imt_address];
-    client.query("INSERT INTO verification (fb_id, uuid, timestamp, imt_address) VALUES ($1,$2,$3,$4)"+
-          "ON DUPLICATE KEY UPDATE uuid=$2, timestamp=$3, imt_address=$4", (err, res) => {
+    client.query("INSERT INTO verification (fb_id, uuid, timestamp, imt_address) VALUES ($1,$2,$3,$4) "+
+          "ON DUPLICATE KEY UPDATE uuid=$2, timestamp=$3, imt_address=$4;", (err, res) => {
             if (err) throw err;
     });
     let link = "https://mycampus-imt.herokuapp.com/verify/"+fb_id+"/"+uuid;
