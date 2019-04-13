@@ -6,7 +6,7 @@ module.exports = (req, res) => {
   let facebook_req = req.body.originalDetectIntentRequest ;
   let sender_psid = facebook_req.payload.data.sender.id ;
   let msg_text = req.body.queryResult.queryText ;
-  let intent = req.body.queryResult.intent.DisplayName ;
+  let intent = req.body.queryResult.intent.displayName ;
   console.log(intent);
   switch (intent) {
     case "smalltalk.greetings.hello":
