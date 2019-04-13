@@ -23,6 +23,7 @@ module.exports = (req, res) => {
             .catch((err) => console.log(err)) ;
       break;
     case "takeMyEmail" :
+      console.log(req.body);
       //manager.newUser(sender_psid,msg_text);
       response = {
         "fulfillmentText": "I have sent you an email to verify your account. Check it out."
