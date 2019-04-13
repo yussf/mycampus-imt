@@ -8,7 +8,6 @@ module.exports = (req, response) => {
     ssl: true,
   });
   client.connect();
-  // Imports dependencies and set up http server
   const
     request = require('request'),
     express = require('express');
@@ -20,7 +19,6 @@ module.exports = (req, response) => {
     let row = res.rows[0] ;
     console.log(row.uuid);
     if (row.uuid == uuid){
-      //// TODO:
           let imt_address = row.imt_address ;
           manager.fetchName(imt_address)
           .then((row) =>{
@@ -36,9 +34,6 @@ module.exports = (req, response) => {
                 response.redirect("https://www.facebook.com") ;
             });
           }) ;
-
-
     }
   });
 };
-///////////////////////////////////////////
