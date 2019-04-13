@@ -16,15 +16,13 @@ module.exports = (req, res) => {
             if (data == true){
               response = {
                 "followupEventInput": {
-                        "name": "hello",
-                        "languageCode": "en-US"
+                        "name": "hello"
                       }
               } ;
             }else{
               response = {
                 "followupEventInput": {
-                        "name": "askForEmail",
-                        "languageCode": "en-US"
+                        "name": "askForEmail"
                       }
 
               } ;
