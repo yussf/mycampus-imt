@@ -7,7 +7,7 @@ module.exports = (req, res) => {
   let sender_psid = facebook_req.payload.data.sender.id ;
   let msg_text = req.body.queryResult.queryText ;
   let intent = req.body.queryResult.intent.name ;
-  let res_msgs = req.body.queryResult.fulfillmentMessages[0].text.text;
+  let res_msgs = req.body.queryResult.fulfillmentMessages[1].text.text;
   console.log(res_msgs);
   console.log(intent);
 
