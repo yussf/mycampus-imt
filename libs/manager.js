@@ -37,6 +37,14 @@ module.exports = {
              });
            });
         },
+  fetchName:function(email){
+    return new Promise(function(callback){
+      client.query("SELECT first_name, last_name FROM students WHERE email_address='"+email+"'", (err,res) =>{
+        let row  = res.rows[0] ;
+        callback(row)  ;
+      });
+    }) ;
+  },
   newUser:function(fb_id,imt_address){
     let uuid = uuidv1() ;
     client.query("INSERT INTO verification (fb_id, uuid,timestamp, imt_address)"+
