@@ -13,7 +13,7 @@ module.exports = {
               console.log(err);
               if (err) throw err;
               let echo = false ;
-              if (res != undefined){
+              if (res != undefined && res.rows != []){
                 //console.log(res);
                 console.log(res.rows);
                 let row = res.rows[0] ;
