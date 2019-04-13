@@ -14,18 +14,9 @@ module.exports = (req, res) => {
             console.log(data);
             console.log(sender_psid);
             if (data == true){
-              response = {
-                "followupEventInput": {
-                        "name": "hello"
-                      }
-              } ;
+              response = {} ;
             }else{
-              response = {
-                "followupEventInput": {
-                        "name": "askForEmail"
-                      }
-
-              } ;
+              response = {} ;
             }
 
             res.setHeader('Content-Type','applicaiton/json');
