@@ -24,27 +24,28 @@ module.exports = (req, res) => {
       break;
     case "takeMyEmail" :
       let email = req.body.queryResult.parameters.email ;
-      if (email.indexOf("@imt-atlantique.net") > 1){
-          manager.isEmailActive(email)
-          .then((data) => {
-            if (data){
-              res.send({
-                "fulfillmentText": "Your email is already verified. Go ahead and ask me!"
-              });
-            }else {
+      manager.isEmailActive(email)
+      .then((data) => {
+        if (data){
+          res.send({
+            "fulfillmentText": "Your email is already verified. Go ahead and ask me!"
+          });
+        }else {
+          if (email.indexOf("@imt-atlantique.net") > 1){
               manager.newUser(sender_psid,email);
               response = {
                 "fulfillmentText": "I have sent you an email to "+email+" to verify your account. Check it out."
               } ;
               res.send(response);
-            }
-          })
-          .catch((err) => console.log(err)) ;
-      }else {
-        res.send({
-          "fulfillmentText": "The address that you entered is not an @imt-atlantique address. Please try a valid one."
-        }) ;
-      }
+        }else {
+          res.send({
+            "fulfillmentText": "The address that you entered is not an @imt-atlantique address. Please try a valid one."
+          }) ;
+        }
+        }
+      })
+      .catch((err) => console.log(err)) ;
+
       break;
     default: res.send({}) ;
 
