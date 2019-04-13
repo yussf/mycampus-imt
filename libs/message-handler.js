@@ -23,7 +23,7 @@ module.exports = (req, res) => {
       break;
     case "takeMyEmail" :
       let email = req.body.queryResult.parameters.email ;
-      manaser.isEmailActive(email)
+      manager.isEmailActive(email)
       .then((data) => {
         if (data){
           res.send({
