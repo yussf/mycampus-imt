@@ -9,7 +9,7 @@ client.connect();
 module.exports = {
   isResident:function(fb_id) {
       return new Promise(function(resolve) {
-            client.query("SELECT first_name, last_name, status FROM users WHERE fb_id='"+fb_id+"'", (err, res) => {
+            client.query("SELECT status FROM users WHERE fb_id='"+fb_id+"'", (err, res) => {
               //if (err) throw err;
               let echo = false ;
               if (res != undefined){
@@ -17,9 +17,8 @@ module.exports = {
                 console.log(res.rows);
                 let row = res.rows[0] ;
                 let o = JSON.parse(JSON.stringify(row)) ;
-                if (o.status == "active"){
-                  let echo = true
-                }
+                if (o.status == "active") let echo = true ;
+
               }
               resolve(echo);
             });
