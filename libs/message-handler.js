@@ -7,6 +7,7 @@ module.exports = (req, res) => {
   switch (intent) {
     case "smalltalk.greetings.hello":
           console.log(intent);
+          let sender_psid = facebook_req.payload.data.sender.id ;
           manager.isIdActive(sender_psid)
           .then((data) => {
                 if (!(data)){
@@ -44,7 +45,6 @@ module.exports = (req, res) => {
         }
       })
       .catch((err) => console.log(err)) ;
-
       break;
     default: res.send({}) ;
 
