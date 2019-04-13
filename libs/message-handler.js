@@ -2,7 +2,7 @@ const facebook = require('./facebook.js');
 const manager = require('./manager.js');
 
 module.exports = (req, res) => {
-
+  console.log(req);
   let facebook_req = req.body.originalDetectIntentRequest ;
   let sender_psid = facebook_req.payload.sender.id ;
   let msg_text = req.body.queryResult.queryText ;
