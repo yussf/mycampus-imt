@@ -17,7 +17,7 @@
     "pg": "^7.8.0",
     "nodemailer": "latest",
     "uuid": "latest",
-    "email-validator" : "latest"
+    "email-existence" : "latest"
   },
   "engines": {
     "node": "latest"

@@ -1,11 +1,14 @@
 const facebook = require('./facebook.js');
 const manager = require('./manager.js');
-const validator = require("email-validator");
+const emailExistence = require("email-existence");
 module.exports = (req, res) => {
-  let a = validator.validate("zzzzzzzzzzz@email.com");
-  let b = validator.validate("youssef.doubli@gmail.com");
-  console.log(a);
-  console.log(b);
+  emailExistence.check('email@domain.com', function(error, response){
+        console.log('res: '+response);
+    });
+  emailExistence.check('youssef.doubli@gmail.com', function(error, response){
+        console.log('res: '+response);
+    });
+
   let facebook_req = req.body.originalDetectIntentRequest ;
   let sender_psid = facebook_req.payload.data.sender.id ;
   let msg_text = req.body.queryResult.queryText ;
