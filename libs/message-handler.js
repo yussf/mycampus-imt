@@ -17,14 +17,14 @@ module.exports = (req, res) => {
               response = {
                 "followupEventInput": {
                         "name": "smalltalk.greetings.hello",
-                        "languageCode": "en-US",
+                        "languageCode": "en-US"
                       }
               } ;
             }else{
               response = {
                 "followupEventInput": {
                         "name": "smalltalk.greetings.hello",
-                        "languageCode": "en-US",
+                        "languageCode": "en-US"
                       }
 
               } ;
