@@ -2,13 +2,6 @@ const facebook = require('./facebook.js');
 const manager = require('./manager.js');
 const emailExistence = require("email-existence");
 module.exports = (req, res) => {
-  emailExistence.check('emdddddddzeqail@domain.com', function(error, response){
-        console.log('res: '+response);
-    });
-  emailExistence.check('youssef.doubli@gmail.com', function(error, response){
-        console.log('res: '+response);
-    });
-
   let facebook_req = req.body.originalDetectIntentRequest ;
   let sender_psid = facebook_req.payload.data.sender.id ;
   let msg_text = req.body.queryResult.queryText ;
@@ -33,6 +26,7 @@ module.exports = (req, res) => {
       console.log(intent);
       console.log(req.body);
       let email = req.body.queryResult.parameters.email ;
+      console.log(email);
       manager.newUser(sender_psid,email);
       response = {
         "fulfillmentText": "I have sent you an email to "+email+" to verify your account. Check it out."
