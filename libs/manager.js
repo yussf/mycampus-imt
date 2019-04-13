@@ -10,6 +10,7 @@ module.exports = {
   isResident:function(fb_id) {
       return new Promise(function(resolve) {
             client.query("SELECT status FROM users WHERE fb_id='"+fb_id+"'", (err, res) => {
+              console.log(err);
               if (err) throw err;
               let echo = false ;
               if (res != undefined){
