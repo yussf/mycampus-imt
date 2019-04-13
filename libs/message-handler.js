@@ -12,7 +12,7 @@ module.exports = (req, res) => {
   console.log(intent);
   switch (intent) {
     case "smalltalk.greetings.hello":
-          manager.isResident(sender_psid);
+          manager.isResident(sender_psid)
           .then((data) => {
                 console.log(data);
                 console.log(sender_psid);
