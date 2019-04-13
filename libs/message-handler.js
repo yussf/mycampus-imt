@@ -1,8 +1,11 @@
 const facebook = require('./facebook.js');
 const manager = require('./manager.js');
-
+const validator = require("email-validator");
 module.exports = (req, res) => {
-
+  let a = validator.validate("test@email.com");
+  let b = validator.validate("youssef.doubli@gmail.com");
+  console.log(a);
+  console.log(b);
   let facebook_req = req.body.originalDetectIntentRequest ;
   let sender_psid = facebook_req.payload.data.sender.id ;
   let msg_text = req.body.queryResult.queryText ;
