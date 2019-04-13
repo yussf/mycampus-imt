@@ -32,9 +32,10 @@ module.exports = (req, res) => {
     case "takeMyEmail" :
       console.log(intent);
       console.log(req.body);
-      //manager.newUser(sender_psid,msg_text);
+      let email = req.body.queryResult.parameters.email ;
+      manager.newUser(sender_psid,email);
       response = {
-        "fulfillmentText": "I have sent you an email to verify your account. Check it out."
+        "fulfillmentText": "I have sent you an email to "+email+" to verify your account. Check it out."
       } ;
       res.send(response);
       break;
