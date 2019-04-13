@@ -7,13 +7,13 @@ module.exports = {
               port: 465, // Port
               secure: true, // this is true as port is 465
               auth: {
-                  user: 'mycampusimt', //Gmail username
-                  pass: 'pass=mycampus' // Gmail password
+                  user: process.env.GMAIL_USER, //Gmail username
+                  pass: process.env.GMAIL_PASSWORD // Gmail password
               }
           });
 
           let mailOptions = {
-              from: '"MyCampus NO REPLY" <mycampusimt@gmail.com>',
+              from: '"MyCampus" <mycampusimt@gmail.com>',
               to: emailTo, // Recepient email address. Multiple emails can send separated by commas
               subject: emailSubject,
               text: emailText
