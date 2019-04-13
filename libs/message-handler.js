@@ -2,7 +2,7 @@ const facebook = require('./facebook.js');
 const manager = require('./manager.js');
 
 module.exports = (req, res) => {
-  
+
   let facebook_req = req.body.originalDetectIntentRequest ;
   let sender_psid = facebook_req.payload.data.sender.id ;
   let msg_text = req.body.queryResult.queryText ;
@@ -21,7 +21,7 @@ module.exports = (req, res) => {
               };
             }else{
               response = {
-                "fulfillmentText": "Hello "+name+"! This is your first usage of MyCampus. Thank you for your trust."+
+                "fulfillmentText": "Hello! This is your first usage of MyCampus. Thank you for your trust."+
                 "You only need to confirm your @imt-atlantique.net address to start using me :). \n"+
                 "Please enter your email address"
               } ;
