@@ -10,7 +10,7 @@ module.exports = (req, res) => {
 
   switch (intent) {
     case "smalltalk.greetings.hello":
-          manager.isResident(sender_psid);
+          manager.isResident(sender_psid)
           .then((data) => {
                 if (data == true){
                   response = {} ;
