@@ -6,29 +6,30 @@ module.exports = (req, res) => {
   let facebook_req = req.body.originalDetectIntentRequest ;
   let sender_psid = facebook_req.payload.data.sender.id ;
   let msg_text = req.body.queryResult.queryText ;
-  let intent = req.body.queryResult.intent.displayName ;
-  let res_msgs = req.body.queryResult.fulfillmentMessages[0].text.text;
-  console.log(res_msgs);
-  console.log(intent);
+  let intent = req.body.queryResult.intent.name ;
+
   switch (intent) {
     case "smalltalk.greetings.hello":
-          manager.isResident(sender_psid)
+          manager.isResident(sender_psid);
           .then((data) => {
-                console.log(data);
-                console.log(sender_psid);
                 if (data == true){
                   response = {} ;
                 }else{
                   response = {} ;
                 }
-
-                res.setHeader('Content-Type','applicaiton/json');
                 res.send(response);
 
             })
             .catch((err) => console.log(err)) ;
       break;
-    default:
+    case "takeMyEmail" :
+      //manager.newUser(sender_psid,msg_text);
+      response = {
+        "fulfillmentText": "I have sent you an email to verify your account. Check it out."
+      } ;
+      res.send(response);
+      break;
+    default: res.send({}) ;
 
   }
 

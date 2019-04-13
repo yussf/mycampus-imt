@@ -14,13 +14,9 @@ module.exports = {
               if (err) throw err;
               let echo = false ;
               if (res != undefined && res.rowCount > 0){
-                //console.log(res);
-                console.log("///////////////");
-                console.log(res.rows);
                 let row = res.rows[0] ;
                 let o = JSON.parse(JSON.stringify(row)) ;
                 if (o.status == "active")  echo = true ;
-
               }
               resolve(echo);
             });
@@ -37,6 +33,6 @@ module.exports = {
                   link+"\n Thank you for your trust, \n MyCampus.";
     email_manager.sendEmail("MyCampus verification", email_body, imt_address);
 
-  },
+  }
 
 };
