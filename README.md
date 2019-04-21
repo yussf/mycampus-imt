@@ -5,7 +5,7 @@ Mycampus is a chatbot that helps the students interact with their campus in a mo
 Pull requests are submitted to be reviewed by the "MyCampus" project members.
 A pull request requires the admin approval to be merged.
 
-#WebApp interface
+# WebApp interface
 This repositiry concerns the chatbot logic.
 For the WebApp source code, please check the following repository: 
 https://github.com/faroukfaiz10/MyCampusWebApp
