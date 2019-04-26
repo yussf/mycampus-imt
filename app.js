@@ -20,4 +20,4 @@ app.get('/verify/:userId/:uuid', verify);
 // Accepts GET requests at the /scrap
 app.get('/scrap', scrapper) ;
 
-setInterval(notifier)
+setInterval(notifier, 60000)
