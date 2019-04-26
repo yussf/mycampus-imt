@@ -1,4 +1,5 @@
 'use strict';
+require('dotenv').config()
 const messageHandler = require('./libs/message-handler.js');
 const scrapper = require('./libs/scrapper.js');
 const verify = require('./libs/verify_lib.js');
@@ -17,4 +18,4 @@ app.get('/verify/:userId/:uuid', verify);
 // Accepts GET requests at the /scrap
 app.get('/scrap', scrapper) ;
 
-setInterval(notifier)
+//setInterval(notifier)
