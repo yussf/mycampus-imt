@@ -24,9 +24,9 @@ module.exports = (req, response) => {
           .then((row) =>{
             let first_name = row.first_name ;
             let last_name = row.last_name ;
-            let args = [userId,first_name,last_name,imt_address,"active"] ;
+            let args = [userId,imt_address,"active"] ;
             console.log(args);
-            client.query("INSERT INTO users(fb_id,first_name,last_name,email,status) VALUES($1,$2,$3,$4,$5)", args, (err, res) => {
+            client.query("INSERT INTO users(fb_id,email,status) VALUES($1,$2,$3)", args, (err, res) => {
                 if (err) throw err;
                 client.query("DELETE FROM verification WHERE fb_id='"+userId+"'") ;
                 console.log("User added.");
