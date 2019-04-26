@@ -24,7 +24,7 @@ module.exports = {
        },
    isEmailActive:function(email) {
        return new Promise(function(resolve) {
-             client.query("SELECT status FROM users WHERE imt_adresse='"+email+"'", (err, res) => {
+             client.query("SELECT status FROM users WHERE email='"+email+"'", (err, res) => {
                //console.log(res);
                if (err) throw err;
                let echo = false ;
