@@ -1,5 +1,5 @@
 'use strict';
-require('dotenv').config()
+//require('dotenv').config()
 const messageHandler = require('./libs/message-handler.js');
 const scrapper = require('./libs/scrapper.js');
 const verify = require('./libs/verify_lib.js');

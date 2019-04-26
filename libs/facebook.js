@@ -1,5 +1,5 @@
 const request = require('request');
-require('dotenv').config()
+//require('dotenv').config()
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
 module.exports = {
