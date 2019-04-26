@@ -1,4 +1,5 @@
 const request = require('request');
+require('dotenv').config()
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
 module.exports = {
@@ -19,7 +20,7 @@ module.exports = {
       "json": request_body
     }, (err, res, body) => {
       if (!err) {
-        console.log('message sent!')
+        console.log('message sent! ||' + sender_psid)
       } else {
         console.error("Unable to send message:" + err);
       }
