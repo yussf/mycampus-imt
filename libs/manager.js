@@ -1,5 +1,6 @@
 const { Client } = require('pg');
 const uuidv1 = require('uuid/v1');
+require('dotenv').config()
 const email_manager = require('./email_manager.js');
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
@@ -45,6 +46,15 @@ module.exports = {
       });
     }) ;
   },
+  isEmailValid:function(email, callback){
+    client.query("SELECT * FROM students WHERE email_address=$1", [$1], (err,res) => {
+      if (res.rowCount == 1){
+        callback(true)
+      }else{
+        callback(false)
+      }
+    })
+  },
   newUser:function(fb_id,imt_address){
     let uuid = uuidv1() ;
     args = [fb_id,uuid,Date.now(),imt_address];
@@ -57,6 +67,11 @@ module.exports = {
                   link+"\n Thank you for your trust, \n MyCampus.";
     email_manager.sendEmail("MyCampus verification", email_body, imt_address);
 
+  },
+  getPackages:function(email, callback){
+    client.query("SELECT * FROM colis WHERE email=$1", [email], (err,res) =>{
+      callback(res.rows)
+    })
   }
 
 };

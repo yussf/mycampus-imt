@@ -35,22 +35,35 @@ module.exports = (req, res) => {
             "fulfillmentText": "Your email is already verified. Go ahead and ask me!"
           });
         }else {
-
-          if (email.indexOf("@imt-atlantique.net") > 1){
+          manager.isEmailValid(email, (isValid) => {
+            if (isValid){
               //call newUser to add user to DB
               manager.newUser(sender_psid,email);
               response = {
                 "fulfillmentText": "I have sent you an email to "+email+" to verify your account. Check it out."
               } ;
               res.send(response);
-        }else {
-          res.send({
-            "fulfillmentText": "The address that you entered is not an @imt-atlantique address. Please try a valid one."
-          }) ;
-        }
+            }else {
+              res.send({
+                "fulfillmentText": "The address that you entered is not an @imt-atlantique address. Please try a valid one."
+              }) ;
+            }
+          })
+         
         }
       })
       .catch((err) => console.log(err)) ;
+      break;
+      case "WhatDidIReceive" :
+        manager.getPackages(email,(packages) => {
+          if (packages == null || packages.length == 0){
+            let text = "I dont seem to find any package in your name in my database. Sorry!"
+          }else{
+            let text = "You have "+packages.length+" package waiting for you"
+          }
+        })
+        
+        
       break;
     default: res.send({}) ;
 
