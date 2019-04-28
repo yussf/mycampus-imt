@@ -47,7 +47,7 @@ module.exports = {
     }) ;
   },
   isEmailValid:function(email, callback){
-    client.query("SELECT * FROM students WHERE email_address=$1", [$1], (err,res) => {
+    client.query("SELECT * FROM students WHERE email_address=$1", [email], (err,res) => {
       if (res.rowCount == 1){
         callback(true)
       }else{
