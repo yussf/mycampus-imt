@@ -6,23 +6,20 @@ module.exports = (req, res) => {
   let sender_psid = facebook_req.payload.data.sender.id ;
   //extract intent from dialgflow's response
   let intent = req.body.queryResult.intent.displayName ;
+  manager.isIdActive(sender_psid)
+  .then((isActive) => {
+    if (!isActive) {
+      res.send({
+        "fulfillmentText": "Hello there! This is your first time talking to me. Please give me your @imt-atlantique.net address to verify your account. Thanks for your trust!"
+      })
+      return;
+    }
+  })
   switch (intent) {
     //if user's intent is to say hello
     case "smalltalk.greetings.hello":
-          // if the id exists in the users TABLE
-          manager.isIdActive(sender_psid)
-          .then((data) => {
-                //the id exists in the users TABLE
-                if (!(data)){
-                  res.send({
-                    "fulfillmentText": "Hello there! This is your first time talking to me. Please give me your @imt-atlantique.net address to verify your account. Thanks for your trust!"
-                  });
-                }else {
-                  res.send({}) ;
-                }
-
-            })
-            .catch((err) => console.log(err)) ;
+      // if the id exists in the users TABLE
+      res.send({})
       break;
     // if user intent is to verify his account
     case "takeMyEmail" :
