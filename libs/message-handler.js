@@ -47,10 +47,11 @@ function handleIntent(intent){
       break;
     case "WhatDidIReceive" :
       manager.getPackages(sender_psid,(packages) => {
+        let text = null
         if (packages == null || packages.length == 0){
-          let text = "I dont seem to find any package in your name in my database. Sorry!"
+          text = "I dont seem to find any package in your name in my database. Sorry!"
         }else{
-          let text = "You have "+packages.length+" package(s) waiting for you"
+          text = "You have "+packages.length+" package(s) waiting for you"
         }
         res.send({"fulfillmentText": text})
         manager.updateLastPQuery(sender_psid)
