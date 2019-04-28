@@ -69,7 +69,7 @@ module.exports = {
 
   },
   getPackages:function(email, callback){
-    client.query("SELECT * FROM colis JOIN users ON colis.email=users.email WHERE users.fb_id=$1 AND colis.isnotified=false", [email], (err,res) =>{
+    client.query("SELECT * FROM colis JOIN users ON colis.email=users.email WHERE users.fb_id=$1 AND colis.date > users.lastpquery", [email], (err,res) =>{
       callback(res.rows)
     })
   },
