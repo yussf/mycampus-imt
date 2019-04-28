@@ -3,7 +3,7 @@
 const messageHandler = require('./libs/message-handler.js');
 const scrapper = require('./libs/scrapper.js');
 const verify = require('./libs/verify_lib.js');
-const notifier = require('./libs/notifier.js').default;
+const notifier = require('./libs/notifier.js');
 const min = 60000
 // Imports dependencies and set up the http server
 const

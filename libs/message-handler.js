@@ -54,24 +54,24 @@ module.exports = (req, res) => {
       })
       .catch((err) => console.log(err)) ;
       break;
-      case "WhatDidIReceive" :
-        manager.getPackages(sender_psid,(packages) => {
-          if (packages == null || packages.length == 0){
-            let text = "I dont seem to find any package in your name in my database. Sorry!"
-            res.send({
-              "fulfillmentText": text
-            });
-          }else{
-            let text = "You have "+packages.length+" package(s) waiting for you"
-            res.send({
-              "fulfillmentText": text
-            });
-          }
-          manager.updateLastPQuery(sender_psid)
-        })
+    case "WhatDidIReceive" :
+      manager.getPackages(sender_psid,(packages) => {
+        if (packages == null || packages.length == 0){
+          let text = "I dont seem to find any package in your name in my database. Sorry!"
+          res.send({
+            "fulfillmentText": text
+          });
+        }else{
+          let text = "You have "+packages.length+" package(s) waiting for you"
+          res.send({
+            "fulfillmentText": text
+          });
+        }
         manager.updateLastPQuery(sender_psid)
+      })
+      manager.updateLastPQuery(sender_psid)
 
-        
+      
       break;
     default: res.send({}) ;
 
