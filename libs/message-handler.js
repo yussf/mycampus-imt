@@ -19,7 +19,6 @@ function handleIntent(intent){
   switch (intent) {
     //if user's intent is to say hello
     case "smalltalk.greetings.hello":
-      // if the id exists in the users TABLE
       res.send({})
       break
     // if user intent is to verify his account
