@@ -1,5 +1,4 @@
 module.exports = (req, response) => {
-  const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
   const { Client } = require('pg');
   const facebook = require('./facebook.js');
   const manager = require('./manager.js');
@@ -8,9 +7,6 @@ module.exports = (req, response) => {
     ssl: true,
   });
   client.connect();
-  const
-    request = require('request'),
-    express = require('express');
   console.log(req.params) ;
   let userId = req.params.userId ;
   let uuid = req.params.uuid;
@@ -20,11 +16,7 @@ module.exports = (req, response) => {
     console.log(row.uuid);
     if (row.uuid == uuid){
           let imt_address = row.imt_address ;
-          manager.fetchName(imt_address)
-          .then((row) =>{
-            let first_name = row.first_name ;
-            let last_name = row.last_name ;
-            let args = [userId,imt_address,"active"] ;
+          let args = [userId,imt_address,"active"] ;
             console.log(args);
             client.query("INSERT INTO users(fb_id,email,status) VALUES($1,$2,$3)", args, (err, res) => {
                 if (err) throw err;
@@ -33,7 +25,6 @@ module.exports = (req, response) => {
                 facebook.callSendAPI(userId, {"text":"Your account is now verified. Ask me!"});
                 response.redirect("https://www.facebook.com") ;
             });
-          }) ;
     }
   });
 };

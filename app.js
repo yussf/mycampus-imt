@@ -3,9 +3,9 @@
 const messageHandler = require('./libs/message-handler.js');
 const scrapper = require('./libs/scrapper.js');
 const verify = require('./libs/verify_lib.js');
-const notifier = require('./libs/notifier.js');
+const notifier = require('./libs/notifier.js').default;
 const min = 60000
-// Imports dependencies and set up http server
+// Imports dependencies and set up the http server
 const
   express = require('express'),
   body_parser = require('body-parser'),
@@ -17,7 +17,9 @@ app.listen(process.env.PORT || 1337, () => console.log('MyCampus is listening'))
 app.post('/dialogflow', messageHandler);
 // Accepts GET requests at the /verify .. endpoint to verify account
 app.get('/verify/:userId/:uuid', verify);
-// Accepts GET requests at the /scrap
+// Accepts GET requests at /scrap
 app.get('/scrap', scrapper) ;
+//handles the ping sent from the webApp, closes connection immediately
 app.post('/ping', (req,res) => res.end())
+//repeat notifier() every n*min
 setInterval(notifier, 1*min)
