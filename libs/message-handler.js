@@ -8,14 +8,16 @@ module.exports = (req, res) => {
   let intent = req.body.queryResult.intent.displayName ;
   manager.isIdActive(sender_psid)
   .then((isActive) => {
-    if (!isActive) {
+    if (intent != "takeMyEmail" && !isActive ) {
       res.send({
         "fulfillmentText": "Hello there! This is your first time talking to me. Please give me your @imt-atlantique.net address to verify your account. Thanks for your trust!"
       })
-      break
+    }else{
+      handleIntent(intent) 
     }
   })
   .catch((err) => console.log(err))
+function handleIntent(intent){
   switch (intent) {
     //if user's intent is to say hello
     case "smalltalk.greetings.hello":
@@ -74,5 +76,5 @@ module.exports = (req, res) => {
     default: res.send({}) ;
 
   }
-
-};
+}
+}
