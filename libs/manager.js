@@ -10,7 +10,7 @@ client.connect();
 module.exports = {
   isIdActive:function(fb_id) {
       return new Promise(function(resolve) {
-            client.query("SELECT status FROM users WHERE fb_id='"+fb_id+"'", (err, res) => {
+            client.query("SELECT status FROM users WHERE fb_id=$1", [fb_id], (err, res) => {
               //console.log(res);
               if (err) throw err;
               let echo = false ;
@@ -25,7 +25,7 @@ module.exports = {
        },
    isEmailActive:function(email) {
        return new Promise(function(resolve) {
-             client.query("SELECT status FROM users WHERE email='"+email+"'", (err, res) => {
+             client.query("SELECT status FROM users WHERE email=$1", [email], (err, res) => {
                //console.log(res);
                if (err) throw err;
                let echo = false ;
@@ -40,7 +40,7 @@ module.exports = {
         },
   fetchName:function(email){
     return new Promise(function(callback){
-      client.query("SELECT first_name, last_name FROM students WHERE email_address='"+email+"'", (err,res) =>{
+      client.query("SELECT first_name, last_name FROM students WHERE email_address=$1", [email], (err,res) =>{
         let row  = res.rows[0] ;
         callback(row)  ;
       });
@@ -69,7 +69,8 @@ module.exports = {
 
   },
   getPackages:function(email, callback){
-    client.query("SELECT * FROM colis JOIN users ON colis.email=users.email WHERE users.fb_id=$1 AND colis.date >= users.lastpquery", [email], (err,res) =>{
+    client.query("SELECT * FROM colis JOIN users ON colis.email=users.email WHERE users.fb_id=$1 AND colis.date >= users.lastpquery",
+     [email], (err,res) =>{
       callback(res.rows)
     })
   },
