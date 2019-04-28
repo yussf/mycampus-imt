@@ -9,10 +9,10 @@ module.exports = (req, res) => {
   manager.isIdActive(sender_psid)
   .then((isActive) => {
     if (!isActive) {
-      res.send({
+      /*res.send({
         "fulfillmentText": "Hello there! This is your first time talking to me. Please give me your @imt-atlantique.net address to verify your account. Thanks for your trust!"
       })
-      return;
+      return;*/
     }
   })
   switch (intent) {
