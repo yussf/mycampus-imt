@@ -63,7 +63,7 @@ module.exports = (req, res) => {
               "fulfillmentText": text
             });
           }else{
-            let text = "You have "+packages.length+" package waiting for you"
+            let text = "You have "+packages.length+" package(s) waiting for you"
             res.send({
               "fulfillmentText": text
             });

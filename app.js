@@ -19,5 +19,5 @@ app.post('/dialogflow', messageHandler);
 app.get('/verify/:userId/:uuid', verify);
 // Accepts GET requests at the /scrap
 app.get('/scrap', scrapper) ;
-app.post('/ping', (req,res) => null)
+app.post('/ping', (req,res) => console.log("i am up"))
 setInterval(notifier, 1*min)
