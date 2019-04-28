@@ -6,8 +6,7 @@ module.exports = (req, res) => {
   let sender_psid = facebook_req.payload.data.sender.id ;
   //extract intent from dialgflow's response
   let intent = req.body.queryResult.intent.displayName ;
-  manager.isIdActive(sender_psid)
-  .then((isActive) => {
+  manager.isIdActive(sender_psid, (isActive) => {
     if (intent != "takeMyEmail" && !isActive ) {
       res.send({
         "fulfillmentText": "Hello there! This is your first time talking to me. Please give me your @imt-atlantique.net address to verify your account. Thanks for your trust!"
@@ -16,7 +15,6 @@ module.exports = (req, res) => {
       handleIntent(intent) 
     }
   })
-  .catch((err) => console.log(err))
 function handleIntent(intent){
   switch (intent) {
     //if user's intent is to say hello
@@ -27,10 +25,9 @@ function handleIntent(intent){
     // if user intent is to verify his account
     case "takeMyEmail" :
       let email = req.body.queryResult.parameters.email ;
-      manager.isIdActive(sender_psid)
-      .then((data) => {
+      manager.isIdActive(sender_psid, (isActive) => {
         //if user aleeady verified
-        if (data){
+        if (isActive){
           res.send({
             "fulfillmentText": "Your email is already verified. Go ahead and ask me!"
           });
@@ -52,7 +49,7 @@ function handleIntent(intent){
          
         }
       })
-      .catch((err) => console.log(err)) ;
+      
       break;
     case "WhatDidIReceive" :
       manager.getPackages(sender_psid,(packages) => {
