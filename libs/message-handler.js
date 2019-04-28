@@ -12,7 +12,7 @@ module.exports = (req, res) => {
       res.send({
         "fulfillmentText": "Hello there! This is your first time talking to me. Please give me your @imt-atlantique.net address to verify your account. Thanks for your trust!"
       })
-      return ""
+      break
     }
   })
   .catch((err) => console.log(err))
