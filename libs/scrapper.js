@@ -1,8 +1,8 @@
-var cheerio = require('cheerio');
+var cheerio = require('cheerio')
 module.exports = (req, res) => {
   // The URL we will scrape from - in our example Anchorman 2.
 
-  url = 'http://services.imt-atlantique.fr/rak/';
+  url = 'http://services.imt-atlantique.fr/rak/'
 
   // The structure of our request call
   // The first parameter is our URL
@@ -15,7 +15,7 @@ module.exports = (req, res) => {
       if(!error){
           // Next, we'll utilize the cheerio library on the returned html which will essentially give us jQuery functionality
 
-          var $ = cheerio.load(html);
+          var $ = cheerio.load(html)
         //to do 
       }
   })

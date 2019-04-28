@@ -1,17 +1,11 @@
-const request = require('request');
+const request = require('request')
 //require('dotenv').config()
-const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
+const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
 
 module.exports = {
   callSendAPI:function(sender_psid, response) {
     // Construct the message body
-    let request_body = {
-      "recipient": {
-        "id": sender_psid
-      },
-      "message": response
-    }
-
+    let request_body = {"recipient": {"id": sender_psid },"message": response}
     // Send the HTTP request to the Messenger Platform
     request({
       "uri": "https://graph.facebook.com/v2.6/me/messages",
@@ -22,7 +16,7 @@ module.exports = {
       if (!err) {
         console.log('message sent! ||' + sender_psid)
       } else {
-        console.error("Unable to send message:" + err);
+        console.error("Unable to send message:" + err)
       }
     });
   }
