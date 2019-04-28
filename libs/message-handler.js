@@ -55,7 +55,6 @@ module.exports = (req, res) => {
       .catch((err) => console.log(err)) ;
       break;
       case "WhatDidIReceive" :
-        manager.updateLastPQuery(sender_psid)
         manager.getPackages(sender_psid,(packages) => {
           if (packages == null || packages.length == 0){
             let text = "I dont seem to find any package in your name in my database. Sorry!"
@@ -70,7 +69,8 @@ module.exports = (req, res) => {
           }
           manager.updateLastPQuery(sender_psid)
         })
-        
+        manager.updateLastPQuery(sender_psid)
+
         
       break;
     default: res.send({}) ;
