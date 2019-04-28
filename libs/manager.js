@@ -74,7 +74,7 @@ module.exports = {
     })
   },
   updateLastPQuery:function(id){
-    client.query("UPDATE users SET lastPQuery=GETDATE() WHERE fb_id=$1", [id], (err,res) => null)
+    client.query("UPDATE users SET lastPQuery=NOW() WHERE fb_id=$1", [id], (err,res) => null)
   }
 };
 
