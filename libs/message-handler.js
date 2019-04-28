@@ -47,7 +47,7 @@ function handleIntent(intent){
       break;
     case "WhatDidIReceive" :
       manager.getPackages(sender_psid,(packages) => {
-        let text = null
+        let text = ""
         if (packages == null || packages.length == 0){
           text = "I dont seem to find any package in your name in my database. Sorry!"
         }else{
