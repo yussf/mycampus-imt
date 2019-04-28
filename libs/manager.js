@@ -72,7 +72,9 @@ module.exports = {
     client.query("SELECT * FROM colis JOIN users ON colis.email=users.email WHERE users.fb_id=$1 AND colis.isnotified=false", [email], (err,res) =>{
       callback(res.rows)
     })
+  },
+  updateLastPQuery:function(id){
+    client.query("UPDATE users SET lastPQuery=GETDATE() WHERE fb_id=$1", [id], (err,res) => null)
   }
-
 };
 

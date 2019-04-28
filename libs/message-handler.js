@@ -67,6 +67,7 @@ module.exports = (req, res) => {
               "fulfillmentText": text
             });
           }
+          manager.updateLastPQuery(sender_psid)
         })
         
         
