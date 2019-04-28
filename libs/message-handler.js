@@ -15,6 +15,7 @@ module.exports = (req, res) => {
       return ""
     }
   })
+  .catch((err) => console.log(err))
   switch (intent) {
     //if user's intent is to say hello
     case "smalltalk.greetings.hello":
