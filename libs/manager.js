@@ -30,9 +30,7 @@ module.exports = {
                if (err) throw err;
                let echo = false ;
                if (res != undefined && res.rowCount > 0){
-                 let row = res.rows[0] ;
-                 let o = JSON.parse(JSON.stringify(row)) ;
-                 if (o.status == "active")  echo = true ;
+                 echo = (res.rows[0].status == "active")
                }
                resolve(echo);
              });
