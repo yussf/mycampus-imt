@@ -8,34 +8,16 @@ const client = new Client({
 });
 client.connect();
 module.exports = {
-  isIdActive:function(fb_id) {
-      return new Promise(function(resolve) {
-            client.query("SELECT status FROM users WHERE fb_id=$1", [fb_id], (err, res) => {
-              //console.log(res);
-              if (err) throw err;
-              let echo = false ;
-              if (res != undefined && res.rowCount > 0){
-                let row = res.rows[0] ;
-                let o = JSON.parse(JSON.stringify(row)) ;
-                if (o.status == "active")  echo = true ;
-              }
-              resolve(echo);
-            });
-          });
+  isIdActive:function(fb_id, callback) {
+    client.query("SELECT status FROM users WHERE fb_id=$1", [fb_id], (err, res) => {
+      if (err) throw err
+      let echo = false 
+      if (res != undefined && res.rowCount > 0){
+        echo = (res.rows[0].status == "active")
+      }
+      callback(echo)
+    })
        },
-   isEmailActive:function(email) {
-       return new Promise(function(resolve) {
-             client.query("SELECT status FROM users WHERE email=$1", [email], (err, res) => {
-               //console.log(res);
-               if (err) throw err;
-               let echo = false ;
-               if (res != undefined && res.rowCount > 0){
-                 echo = (res.rows[0].status == "active")
-               }
-               resolve(echo);
-             });
-           });
-        },
   fetchName:function(email){
     return new Promise(function(callback){
       client.query("SELECT first_name, last_name FROM students WHERE email_address=$1", [email], (err,res) =>{
