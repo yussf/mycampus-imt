@@ -55,11 +55,17 @@ module.exports = (req, res) => {
       .catch((err) => console.log(err)) ;
       break;
       case "WhatDidIReceive" :
-        manager.getPackages(email,(packages) => {
+        manager.getPackages(sender_psid,(packages) => {
           if (packages == null || packages.length == 0){
             let text = "I dont seem to find any package in your name in my database. Sorry!"
+            res.send({
+              "fulfillmentText": text
+            });
           }else{
             let text = "You have "+packages.length+" package waiting for you"
+            res.send({
+              "fulfillmentText": text
+            });
           }
         })
         

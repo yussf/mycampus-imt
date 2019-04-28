@@ -1,6 +1,6 @@
 const { Client } = require('pg');
 const uuidv1 = require('uuid/v1');
-require('dotenv').config()
+//require('dotenv').config()
 const email_manager = require('./email_manager.js');
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
@@ -69,9 +69,10 @@ module.exports = {
 
   },
   getPackages:function(email, callback){
-    client.query("SELECT * FROM colis WHERE email=$1", [email], (err,res) =>{
+    client.query("SELECT * FROM colis JOIN users ON colis.email=users.email WHERE users.fb_id=$1", [email], (err,res) =>{
       callback(res.rows)
     })
   }
 
 };
+
