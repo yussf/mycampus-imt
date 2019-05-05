@@ -75,7 +75,7 @@ function handleIntent(intent){
           text = text + line + "\n"
         }
         console.log(text)
-        res.send({"fulfillmentText": "text"})
+        res.send({"fulfillmentText": text})
       })
       break;
     default: res.send({}) ;
