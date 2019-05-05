@@ -50,9 +50,7 @@ module.exports = {
   },
   getPackages:function(fb_id, callback){
     client.query("SELECT * FROM colis JOIN users ON colis.email=users.email WHERE users.fb_id=$1 AND colis.date >= users.lastpquery",
-     [fb_id], (err,res) =>{
-      callback(res.rows)
-    })
+     [fb_id], (err,res) => callback(res.rows))
   },
   updateLastPQuery:function(id){
     client.query("UPDATE users SET lastPQuery=NOW() WHERE fb_id=$1", [id], (err,res) => null)
