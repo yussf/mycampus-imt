@@ -17,8 +17,6 @@ app.listen(process.env.PORT || 1337, () => console.log('MyCampus is listening'))
 app.post('/dialogflow', messageHandler)
 // Accepts GET requests at the /verify .. endpoint to verify account
 app.get('/verify/:userId/:uuid', verify)
-// Accepts GET requests at /scrap
-app.get('/scrap/:id', scrapper)
 //handles the ping sent from the webApp, closes connection immediately
 app.post('/ping', (req,res) => res.end())
 //repeat notifier() every n*min
