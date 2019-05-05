@@ -1,7 +1,6 @@
 require('dotenv').config()
 const { Client } = require('pg')
 const uuidv1 = require('uuid/v1')
-//require('dotenv').config()
 const email_manager = require('./email_manager.js')
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
