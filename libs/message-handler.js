@@ -74,7 +74,6 @@ function handleIntent(intent){
         for (line in menu){
           text = text + "- " + menu[line] + "\n"
         }
-        console.log(text)
         res.send({"fulfillmentText": text})
       })
       break;
