@@ -65,7 +65,7 @@ function handleIntent(intent){
         for (line in menu){
           text = text + "- " + menu[line] + "\n"
         }
-        res.send({"fulfillmentText": "text"})
+        res.send({"fulfillmentText": text})
       })
       break;
     case "menuDinner":
