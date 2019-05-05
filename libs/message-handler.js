@@ -63,7 +63,7 @@ function handleIntent(intent){
       scrapper.getMenu(0, (menu) =>{
         let text = ""
         for (line in menu){
-          text = text + menu[line] + "\n"
+          text = text + "- " + menu[line] + "\n"
         }
         res.send({"fulfillmentText": "text"})
       })
@@ -72,7 +72,7 @@ function handleIntent(intent){
       scrapper.getMenu(1, (menu) =>{
         let text = ""
         for (line in menu){
-          text = text + line + "\n"
+          text = text + "- " + menu[line] + "\n"
         }
         console.log(text)
         res.send({"fulfillmentText": text})
