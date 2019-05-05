@@ -2,6 +2,8 @@ const request = require('request')
 //require('dotenv').config()
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
 
+require('dotenv').config()
+
 module.exports = {
   callSendAPI:function(sender_psid, response) {
     // Construct the message body

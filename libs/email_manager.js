@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+require('dotenv').config()
 module.exports = {
   sendEmail:function(emailSubject,emailText,emailTo){
     nodemailer.createTestAccount((err, account) => {

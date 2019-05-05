@@ -1,4 +1,5 @@
 module.exports = (req, response) => {
+  require('dotenv').config()
   const { Client } = require('pg')
   const facebook = require('./facebook.js')
   const manager = require('./manager.js')

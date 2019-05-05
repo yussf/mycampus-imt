@@ -1,5 +1,5 @@
 'use strict'
-//require('dotenv').config()
+require('dotenv').config()
 const messageHandler = require('./libs/message-handler.js')
 const scrapper = require('./libs/scrapper.js')
 const verify = require('./libs/verify_lib.js')
@@ -18,7 +18,7 @@ app.post('/dialogflow', messageHandler)
 // Accepts GET requests at the /verify .. endpoint to verify account
 app.get('/verify/:userId/:uuid', verify)
 // Accepts GET requests at /scrap
-app.get('/scrap', scrapper)
+app.get('/scrap/:id', scrapper)
 //handles the ping sent from the webApp, closes connection immediately
 app.post('/ping', (req,res) => res.end())
 //repeat notifier() every n*min

@@ -1,22 +1,23 @@
-var cheerio = require('cheerio')
-module.exports = (req, res) => {
-  // The URL we will scrape from - in our example Anchorman 2.
+const cheerio = require('cheerio')
+const request = require('request')
+const url = 'http://services.imt-atlantique.fr/rak/'
 
-  url = 'http://services.imt-atlantique.fr/rak/'
+module.exports = {
+  getMenu:function(id, callback){
+    request(url, function(error, response, html){
+      if (error) throw error
+      var $ = cheerio.load(html)
+      let con = $("#menu_rampe table")
+      console.log(con.length)
+      let table = con.get(id)
+      let menu = {}
+      $(table).find('font, strong').remove()
+      $(table).find('a').toArray().forEach((e,i) =>{
+        if ($(e).text().indexOf("\n") < 0) menu[i] = $(e).text()
+      })
+      callback(menu)
+    }) 
+  }
+}
 
-  // The structure of our request call
-  // The first parameter is our URL
-  // The callback function takes 3 parameters, an error, response status code and the html
 
-  request(url, function(error, response, html){
-
-      // First we'll check to make sure no errors occurred when making the request
-
-      if(!error){
-          // Next, we'll utilize the cheerio library on the returned html which will essentially give us jQuery functionality
-
-          var $ = cheerio.load(html)
-        //to do 
-      }
-  })
-};

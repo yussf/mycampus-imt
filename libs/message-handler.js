@@ -1,4 +1,6 @@
+require('dotenv').config()
 const manager = require('./manager.js')
+const scrapper = require('./scrapper.js')
 module.exports = (req, res) => {
   // get original request as sent from facebook messenger
   let facebook_req = req.body.originalDetectIntentRequest
@@ -56,6 +58,24 @@ function handleIntent(intent){
         manager.updateLastPQuery(sender_psid)
       })
       
+      break;
+    case "menuLunch":
+      scrapper.getMenu(0, (menu) =>{
+        let text = ""
+        for (line in menu){
+          text = text + line + "\n"
+        }
+        res.send({"fulfillmentText": text})
+      })
+      break;
+    case "menuDinner":
+      scrapper.getMenu(1, (menu) =>{
+        let text = ""
+        for (line in menu){
+          text = text + line + "\n"
+        }
+        res.send({"fulfillmentText": text})
+      })
       break;
     default: res.send({}) ;
 

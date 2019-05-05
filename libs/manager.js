@@ -1,3 +1,4 @@
+require('dotenv').config()
 const { Client } = require('pg')
 const uuidv1 = require('uuid/v1')
 //require('dotenv').config()
@@ -48,14 +49,14 @@ module.exports = {
     email_manager.sendEmail("MyCampus verification", email_body, imt_address)
 
   },
-  getPackages:function(email, callback){
+  getPackages:function(fb_id, callback){
     client.query("SELECT * FROM colis JOIN users ON colis.email=users.email WHERE users.fb_id=$1 AND colis.date >= users.lastpquery",
-     [email], (err,res) =>{
+     [fb_id], (err,res) =>{
       callback(res.rows)
     })
   },
   updateLastPQuery:function(id){
     client.query("UPDATE users SET lastPQuery=NOW() WHERE fb_id=$1", [id], (err,res) => null)
   }
-};
+}
 
