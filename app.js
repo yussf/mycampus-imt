@@ -19,4 +19,4 @@ app.get('/verify/:userId/:uuid', verify)
 //handles the ping sent from the webApp, closes connection immediately
 app.post('/ping', (req,res) => res.end())
 //repeat notifier() every n*min
-setInterval(notifier, 5*min)
+//setInterval(notifier, 5*min)
