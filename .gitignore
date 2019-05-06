@@ -1,4 +1,4 @@
 /node_modules
 .env
-/cdc/*
-!/cdc/cdc.pdf
+/docs/*
+!/docs/*.pdf
