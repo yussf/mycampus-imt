@@ -27,14 +27,13 @@ module.exports = {
     })
   },
   isEmailValid:function(email, callback){
-    /*client.query("SELECT * FROM students WHERE LOWER(email_address)=LOWER($1)", [email], (err,res) => {
+    client.query("SELECT * FROM students WHERE LOWER(email_address)=LOWER($1)", [email], (err,res) => {
       if (res.rowCount == 1){
         callback(true)
       }else{
         callback(false)
       }
-    })*/
-    callback(true)
+    })
   },
   newUser:function(fb_id,imt_address){
     let uuid = uuidv1()
