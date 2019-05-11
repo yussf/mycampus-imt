@@ -25,7 +25,7 @@ function handleIntent(intent){
       break
     // if user intent is to verify his account
     case "takeMyEmail" :
-      let email = req.body.queryResult.parameters.email
+      let email = req.body.queryResult.parameters.email.toLowerCase()
       manager.isIdActive(sender_psid, (isActive) => {
         //if user aleeady verified
         if (isActive){
