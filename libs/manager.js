@@ -51,26 +51,5 @@ module.exports = {
   getPackages:function(fb_id, callback){
     client.query("SELECT * FROM colis JOIN users ON colis.email=users.email WHERE users.fb_id=$1",
      [fb_id], (err,res) => callback(res.rows))
-  },
-  isCuisineAvailable:function(id,callback){
-    client.query("SELECT isAvailable FROM cuisines WHERE id="+id,(err, isAvailable) =>callback(isAvailable))
-  },
-  getAvailableCuisines:function(callback){
-    client.query("SELECT id FROM cuisines WHERE isAvailable=true",(err, cuisines) => callback(cuisines.rows))
-  },
-  setCuisine:function(id,isAvailable){
-    client.query("UPDATE cuisines SET isAvailable=$1 WHERE id=$2", [isAvailable, id])
-  },
-  getLAVAvailable:function(callback){
-    client.query("SELECT id FROM machines WHERE machine='LAV' AND isAvailable=true",(err, LAV) => callback(LAV.rows))
-  },
-  getSECAvailable:function(callback){
-    client.query("SELECT id FROM machines WHERE machine='SEC' AND isAvailable=true",(err, SEC) =>callback(SEC.rows))
-  },
-  setLAV(id, isAvailable){
-    client.query("UPDATE machines SET isAvailable=$1 WHERE machine='LAV' AND id=$2", [isAvailable, id])
-  },
-  setSEC(id, isAvailable){
-    client.query("UPDATE machines SET isAvailable=$1 WHERE machine='SEC' AND id=$2", [isAvailable, id])
   }
 }

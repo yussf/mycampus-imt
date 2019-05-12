@@ -76,33 +76,6 @@ function handleIntent(intent){
         res.send({"fulfillmentText": text})
       })
       break;
-    case "getAvailableCuisines":
-      let text = ""
-      manager.getAvailableCuisines((cuisines) => {
-        cuisines.forEach(cuisine => {
-          text = text + "- I" + cuisine.id
-        })
-        res.send({"fulfillmentText": text})
-      })
-      break;
-    case "isCuisineAvailable":
-      let id = req.body.queryResult.parameters.id
-      let text = "I doesn't seem available for the moment. Sorry."
-      manager.isCuisineAvailable(id, (isAvailable) => {
-        if (isAvailable) text = "Yes it is friend."
-        res.send({"fulfillmentText": text})
-      })
-      break;
-    case "setCuisineFalse":
-      let id = req.body.queryResult.parameters.id
-      manager.setCuisine(id, false)
-      res.send({"fulfillmentText": "Noted. Thanks!"})
-      break;
-    case "setCuisineTrue":
-      let id = req.body.queryResult.parameters.id
-      manager.setCuisine(id, true)
-      res.send({"fulfillmentText": "Noted. Thanks!"})
-      break;
     default: res.send({}) ;
 
   }
