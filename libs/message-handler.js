@@ -79,11 +79,18 @@ function handleIntent(intent){
       break;
     case "menuCafeteria":
       scrapper.getMenu(0, 'cafeteria', (menu) =>{
-        let text = ""
+        let text = "*Salades* : \n"
         for (line in menu){
           text = text + "- " + menu[line] + "\n"
         }
-        res.send({"fulfillmentText": text})
+        scrapper.getMenu(1, 'cafeteria', (menu) =>{
+          text = text + "*Sandwichs* : \n"
+          for (line in menu){
+            text = text + "- " + menu[line] + "\n"
+          }
+          
+          res.send({"fulfillmentText": text})
+        })
       })
       break;
     case "emploiAsk":
