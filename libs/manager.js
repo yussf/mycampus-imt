@@ -55,7 +55,7 @@ module.exports = {
   getEDTidFromPSID:function(fb_id, callback){
     client.query("SELECT edt_id FROM students JOIN users ON users.email = students.email_address WHERE users.fb_id=$1", [fb_id],
     function(err,res){
-      callback(res.rows)
+      callback(res.rows[0].edt_id)
     })
   }
 }
