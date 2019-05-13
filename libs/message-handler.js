@@ -78,7 +78,7 @@ function handleIntent(intent){
       })
       break;
     case "emploiAsk":
-      manager.getEDTidFromPSID(sender_psid, text => {
+      manager.getEDTidFromPSID(sender_psid, edt_id => {
         icalParser(edt_id, text =>{
           res.send({"fulfillmentText": text})
         })
