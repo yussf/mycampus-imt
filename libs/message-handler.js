@@ -60,7 +60,7 @@ function handleIntent(intent){
       
       break;
     case "menuLunch":
-      scrapper.getMenu(0, (menu) =>{
+      scrapper.getMenu(0, 'rampe', (menu) =>{
         let text = ""
         for (line in menu){
           text = text + "- " + menu[line] + "\n"
@@ -69,7 +69,16 @@ function handleIntent(intent){
       })
       break;
     case "menuDinner":
-      scrapper.getMenu(1, (menu) =>{
+      scrapper.getMenu(1, 'rampe', (menu) =>{
+        let text = ""
+        for (line in menu){
+          text = text + "- " + menu[line] + "\n"
+        }
+        res.send({"fulfillmentText": text})
+      })
+      break;
+    case "menuCafeteria":
+      scrapper.getMenu(0, 'cafeteria', (menu) =>{
         let text = ""
         for (line in menu){
           text = text + "- " + menu[line] + "\n"

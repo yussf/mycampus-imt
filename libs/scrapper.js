@@ -1,13 +1,13 @@
 const cheerio = require('cheerio')
 const request = require('request')
-//const url = 'http://services.imt-atlantique.fr/rak/'
-const url = 'http://services.imt-atlantique.fr/rak/#menu_cafeteria'
+const url = 'http://services.imt-atlantique.fr/rak/'
 module.exports = {
-  getMenu:function(id, callback){
+  getMenu:function(id, where, callback){
     request(url, function(error, response, html){
       if (error) throw error
       var $ = cheerio.load(html)
       let con = $("#menu_rampe table")
+      if (where == 'cafeteria') con = $("#menu_cafeteria table")
       console.log(con.length)
       let table = con.get(id)
       let menu = {}
