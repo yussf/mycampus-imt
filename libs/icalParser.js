@@ -16,7 +16,7 @@ module.exports = (id, callback) => {
             if (data.hasOwnProperty(k)) {
                 var ev = data[k];
                 if (data[k].type == 'VEVENT') {
-                    text = text + `${ev.summary} is in ${ev.location} on the ${ev.start.getDate()} of ${months[ev.start.getMonth()]} at ${ev.start.toLocaleTimeString('en-GB')}`
+                    text = text + `- *${ev.summary}* | ${ev.location} | ${ev.start.getDate()} of ${months[ev.start.getMonth()]} | ${ev.start.toLocaleTimeString('en-GB')} \n`
     
                 }
             }
