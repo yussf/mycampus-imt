@@ -80,6 +80,7 @@ function handleIntent(intent){
     case "emploiAsk":
       manager.getEDTidFromPSID(sender_psid, edt_id => {
         icalParser(edt_id, text =>{
+          console.log(text)
           res.send({"fulfillmentText": text})
         })
       })
