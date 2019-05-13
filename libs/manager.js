@@ -53,3 +53,5 @@ module.exports = {
      [fb_id], (err,res) => callback(res.rows))
   }
 }
+
+module.exports.getIdsFromEDT()
