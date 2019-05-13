@@ -1,7 +1,7 @@
 const cheerio = require('cheerio')
 const request = require('request')
-const url = 'http://services.imt-atlantique.fr/rak/'
-
+//const url = 'http://services.imt-atlantique.fr/rak/'
+const url = 'http://services.imt-atlantique.fr/rak/#menu_cafeteria'
 module.exports = {
   getMenu:function(id, callback){
     request(url, function(error, response, html){
