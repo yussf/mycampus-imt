@@ -51,6 +51,10 @@ module.exports = {
   getPackages:function(fb_id, callback){
     client.query("SELECT * FROM colis JOIN users ON colis.email=users.email WHERE users.fb_id=$1",
      [fb_id], (err,res) => callback(res.rows))
+  },
+  getEDTidFromPSID:function(fb_id, callback){
+    client.query("SELECT edt_id FROM students JOIN users ON users.email = students.email_address WHERE users.fb_id=$1", [fb_id],
+    (err,res) => callback(res.rows))
   }
 }
 

@@ -1,6 +1,7 @@
 require('dotenv').config()
 const manager = require('./manager.js')
 const scrapper = require('./scrapper.js')
+const icalParser = require('./icalParser')
 module.exports = (req, res) => {
   // get original request as sent from facebook messenger
   let facebook_req = req.body.originalDetectIntentRequest
@@ -75,6 +76,13 @@ function handleIntent(intent){
         }
         res.send({"fulfillmentText": text})
       })
+      break;
+    case "emploiAsk":
+      let edt_id = manager.getEDTidFromPSID(sender_psid)
+      icalParser(edt_id, text =>{
+        res.send({"fulfillmentText": text})
+      })
+
       break;
     default: res.send({}) ;
 
