@@ -1,9 +1,9 @@
 const ical = require('ical');
-const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 function formatTimeHHMMA(d) {
     function z(n){return (n<10?'0':'')+n}
-    var h = d.getHours();
-    return (h%12 || 12) + ':' + z(d.getMinutes()) + ' ' + (h<12? 'AM' :'PM');
+    var h = d.getHours() + 2
+    return (h%12 || 12) + ':' + z(d.getMinutes()) + ' ' + (h<12? 'AM' :'PM')
   }
 module.exports = (id, callback) => {
     // get date(today)
