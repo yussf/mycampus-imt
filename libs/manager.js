@@ -55,13 +55,14 @@ module.exports = {
   getUserPackages:function(fb_id,callback){
     client.query("SELECT * FROM colis FULL OUTER JOIN users ON colis.email = users.email WHERE users.fb_id=$1", [fb_id],
     (err,res) =>{
+      let text = ""
        res.rows.forEach(function(colis){
          let d = new Date(colis.date)
          let month = d.getMonth()+1
          let shortDate = d.getDate()+"-"+month+"-"+d.getFullYear()
-         let text = "Date : "+shortDate+" \n Par : "+colis.sender+" \n Retrait : "+colis.location+" \n"
-         callback(text)
+        text = text + "Date : "+shortDate+" \n Par : "+colis.sender+" \n Retrait : "+colis.location+" \n ---------------"
        })
+       callback(text)
    })
   },
   getEDTidFromPSID:function(fb_id, callback){
