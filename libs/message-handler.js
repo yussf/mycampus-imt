@@ -53,11 +53,14 @@ function handleIntent(intent){
         if (packages == null || packages.length == 0){
           text = "I dont seem to find any package in your name in my database. Sorry!"
         }else{
-          text = "You have "+packages.length+" package(s) waiting for you"
+          text = "You have "+packages.length+" package(s) waiting for you. Do you want more info?"
         }
         res.send({"fulfillmentText": text})
       })
       
+      break;
+    case "WhatDidIReceive - yes":
+      manager.getUserPackages(sender_psid, (text) => res.send({"fulfillmentText": text}))
       break;
     case "menuLunch":
       scrapper.getMenu(0, 'rampe', (menu) =>{
@@ -69,7 +72,7 @@ function handleIntent(intent){
       })
       break;
     case "menuDinner":
-      scrapper.getMenu(1, 'rampe', (menu) =>{
+      scrapper.getMenu(1, 'rampe', (menu) => {
         let text = ""
         for (line in menu){
           text = text + "- " + menu[line] + "\n"
