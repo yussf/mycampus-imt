@@ -60,7 +60,7 @@ module.exports = {
          let d = new Date(colis.date)
          let month = d.getMonth()+1
          let shortDate = d.getDate()+"-"+month+"-"+d.getFullYear()
-        text = text + "Date : "+shortDate+" \n Par : "+colis.sender+" \n Retrait : "+colis.location+" \n ---------------"
+        text = text + "Date : "+shortDate+" \n Par : "+colis.sender+" \n Retrait : "+colis.location+" \n --------------- \n"
        })
        callback(text)
    })
