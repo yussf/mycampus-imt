@@ -5,15 +5,21 @@ function formatTimeHHMMA(d) {
     var h = d.getHours() + 2
     return (h%12 || 12) + ':' + z(d.getMinutes()) + ' ' + (h<12? 'AM' :'PM')
   }
-module.exports = (id, callback) => {
+module.exports = (id, edtdate, callback) => {
     // get date(today)
-    var today = new Date()
-    var dd = today.getDate()
-    var mm = today.getMonth()+1 //January is 0!
-    var yyyy = today.getFullYear()
-    if(dd<10) dd = '0'+dd
-    if(mm<10) mm = '0'+mm
-    today = yyyy + '-' + mm + '-' + dd
+    let date = ""
+    if (edtdate == "today"){
+        var today = new Date()
+        var dd = today.getDate()
+        var mm = today.getMonth()+1 //January is 0!
+        var yyyy = today.getFullYear()
+        if(dd<10) dd = '0'+dd
+        if(mm<10) mm = '0'+mm
+        date = yyyy + '-' + mm + '-' + dd
+    }else{
+        date = edtdate.replace("/","-")
+    }
+    
     let text = ""
     const url = "http://edt.telecom-bretagne.eu/jsp/custom/modules/plannings/anonymous_cal.jsp?resources="+id+"&projectId=3&calType=ical&firstDate="+today+"&lastDate="+today
     ical.fromURL(url, {}, function (err, data) {
