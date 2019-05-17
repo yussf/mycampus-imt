@@ -96,14 +96,14 @@ function handleIntent(intent){
       })
       break;
     case "edtToday":
-      manager.getEDTidFromPSID(sender_psid, "today", edt_id => {
-        icalParser(edt_id, text => res.send({"fulfillmentText": text}))
+      manager.getEDTidFromPSID(sender_psid, edt_id => {
+        icalParser(edt_id, "today", text => res.send({"fulfillmentText": text}))
       })
       break;
     case "edtDate":
       let date = req.body.queryResult.parameters.date
-      manager.getEDTidFromPSID(sender_psid, date, edt_id => {
-        icalParser(edt_id, text => res.send({"fulfillmentText": text}))
+      manager.getEDTidFromPSID(sender_psid, edt_id => {
+        icalParser(edt_id, date, text => res.send({"fulfillmentText": text}))
       })
       break;
     default: res.send({}) ;
