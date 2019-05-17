@@ -5,7 +5,7 @@ function formatTimeHHMMA(d) {
     var h = d.getHours() + 2
     return (h%12 || 12) + ':' + z(d.getMinutes()) + ' ' + (h<12? 'AM' :'PM')
   }
-function getDate(date){
+function getDate(edtdate){
     let date = ""
     if (edtdate == "today"){
         var today = new Date()
