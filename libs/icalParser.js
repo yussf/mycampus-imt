@@ -24,7 +24,7 @@ module.exports = (id, edtdate, callback) => {
             if (data.hasOwnProperty(k)) {
                 var ev = data[k];
                 if (data[k].type == 'VEVENT') {
-                    text = text + `- ${ev.summary} | ${ev.location} | ${date} | ${formatTimeHHMMA(ev.start)} \n \n`
+                    text = text + `- ${ev.summary} | ${ev.location} | ${date} | ${formatTimeHHMMA(ev.start)} - ${formatTimeHHMMA(ev.end)}  \n \n`
     
                 }
             }
