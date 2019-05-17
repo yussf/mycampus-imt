@@ -16,6 +16,7 @@ function getDate(edtdate){
         if(mm<10) mm = '0'+mm
         return yyyy + '-' + mm + '-' + dd
     }else{
+        console.log(edtdate.replace("/","-"))
         return edtdate.replace("/","-")
     }
 }
@@ -36,3 +37,5 @@ module.exports = (id, edtdate, callback) => {
         callback(text)
     })
 }
+
+
