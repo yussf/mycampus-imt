@@ -5,8 +5,7 @@ function formatTimeHHMMA(d) {
     var h = d.getHours() + 2
     return (h%12 || 12) + ':' + z(d.getMinutes()) + ' ' + (h<12? 'AM' :'PM')
   }
-module.exports = (id, edtdate, callback) => {
-    // get date(today)
+function getDate(date){
     let date = ""
     if (edtdate == "today"){
         var today = new Date()
@@ -19,9 +18,11 @@ module.exports = (id, edtdate, callback) => {
     }else{
         date = edtdate.replace("/","-")
     }
-    
+}
+module.exports = (id, edtdate, callback) => {
+    let date = getDate(edtdate)
     let text = ""
-    const url = "http://edt.telecom-bretagne.eu/jsp/custom/modules/plannings/anonymous_cal.jsp?resources="+id+"&projectId=3&calType=ical&firstDate="+today+"&lastDate="+today
+    const url = "http://edt.telecom-bretagne.eu/jsp/custom/modules/plannings/anonymous_cal.jsp?resources="+id+"&projectId=3&calType=ical&firstDate="+date+"&lastDate="+date
     ical.fromURL(url, {}, function (err, data) {
         for (let k in data) {
             if (data.hasOwnProperty(k)) {
