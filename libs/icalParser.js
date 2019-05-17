@@ -1,9 +1,8 @@
 const ical = require('ical');
-const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 function formatTimeHHMMA(d) {
     function z(n){return (n<10?'0':'')+n}
     var h = d.getHours() + 2
-    return (h%12 || 12) + ':' + z(d.getMinutes()) + ' ' + (h<12? 'AM' :'PM')
+    return h + ':' + z(d.getMinutes())
   }
 function getDate(edtdate){
     var today;
@@ -25,7 +24,7 @@ module.exports = (id, edtdate, callback) => {
             if (data.hasOwnProperty(k)) {
                 var ev = data[k];
                 if (data[k].type == 'VEVENT') {
-                    text = text + `- ${ev.summary} | ${ev.location} | ${ev.start.getDate()} of ${months[ev.start.getMonth()]} | ${formatTimeHHMMA(ev.start)} \n \n`
+                    text = text + `- ${ev.summary} | ${ev.location} | ${date} | ${formatTimeHHMMA(ev.start)} \n \n`
     
                 }
             }
