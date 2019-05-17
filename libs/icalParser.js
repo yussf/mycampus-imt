@@ -6,19 +6,15 @@ function formatTimeHHMMA(d) {
     return (h%12 || 12) + ':' + z(d.getMinutes()) + ' ' + (h<12? 'AM' :'PM')
   }
 function getDate(edtdate){
-    let date = ""
-    if (edtdate == "today"){
-        var today = new Date()
-        var dd = today.getDate()
-        var mm = today.getMonth()+1 //January is 0!
-        var yyyy = today.getFullYear()
-        if(dd<10) dd = '0'+dd
-        if(mm<10) mm = '0'+mm
-        return yyyy + '-' + mm + '-' + dd
-    }else{
-        console.log(edtdate.replace("/","-"))
-        return edtdate.replace("/","-")
-    }
+    var today;
+    if (edtdate == "today") today = new Date()
+    else today = new Date(edtdate)
+    var dd = today.getDate()
+    var mm = today.getMonth()+1 //January is 0!
+    var yyyy = today.getFullYear()
+    if(dd<10) dd = '0'+dd
+    if(mm<10) mm = '0'+mm
+    return yyyy + '-' + mm + '-' + dd
 }
 module.exports = (id, edtdate, callback) => {
     let date = getDate(edtdate)
