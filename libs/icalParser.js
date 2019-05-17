@@ -1,7 +1,7 @@
 const ical = require('ical');
 function formatTimeHHMMA(d) {
     function z(n){return (n<10?'0':'')+n}
-    var h = d.getHours()
+    var h = d.getHours() + 2
     return h + ':' + z(d.getMinutes())
   }
 function getDate(edtdate){
