@@ -10,7 +10,7 @@ function clean(str){
 }
 
 module.exports = {
-  getJourneys:function(callback){
+  getJourneys:function(dest, callback){
     request(url, function(error, response, html){
         if (error) throw error
         var $ = cheerio.load(html)
@@ -18,16 +18,18 @@ module.exports = {
         var dump = Array()
         content.children().each((i,e) => {
             data = $(e).find(".col-75")
-            var trajet = 
-                    {   "driver" : clean($(data[0]).text()),
-                        "depart" : clean($(data[1]).text()).toLowerCase(),
-                        "destination" :clean( $(data[2]).text()).toLowerCase(),
-                        "date" : clean($(data[3]).text()),
-                        "heure" : clean($(data[4]).text()),
-                        "places_restantes" : parseInt($(data[5]).text(), 10) - parseInt($(data[6]).text(), 10),
-                        "allez_retour" : clean($(data[7]).text())
-                    }
-            dump.push(trajet)
+            if (clean( $(data[2]).text()).toLowerCase() == clean(dest).toLowerCase()){
+              var trajet = 
+                      {   "driver" : clean($(data[0]).text()),
+                          "depart" : clean($(data[1]).text()).toLowerCase(),
+                          "destination" :clean( $(data[2]).text()).toLowerCase(),
+                          "date" : clean($(data[3]).text()),
+                          "heure" : clean($(data[4]).text()),
+                          "places_restantes" : parseInt($(data[5]).text(), 10) - parseInt($(data[6]).text(), 10),
+                          "allez_retour" : clean($(data[7]).text())
+                      }
+              dump.push(trajet)
+            }
         })
         callback(dump)
     })
