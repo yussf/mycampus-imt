@@ -18,8 +18,8 @@ module.exports = {
         var dump = Array()
         content.children().each((i,e) => {
             data = $(e).find(".col-75")
-            departure = clean(departure).toLowerCase()
-            destination = clean(destination).toLowerCase()
+            //departure = clean(departure).toLowerCase()
+            //destination = clean(destination).toLowerCase()
             if (clean( $(data[1]).text()).toLowerCase() == departure &&
                   clean( $(data[2]).text()).toLowerCase() == destination){
               var trajet = 
