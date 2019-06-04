@@ -119,13 +119,14 @@ function handleIntent(intent){
     case "covoiturage - yes":
         let destt = req.body.queryResult.parameters.destination
         carpool.getJourneys(destt, data => {
-          for (journey in data){
-            var text = "Sorry. There's no result for your destination"
-            if (data.length > 1){
-              text = `${data['driver']} is heading to ${data['destination']} on ${data['date']} at ${data['heure']}. \n ${data['places_restantes']} place(s) left.`
+          var text = ""
+          if (data.length == 0) text = "Sorry. There's no result for your destination"
+          else{
+            for (journey in data){
+                text = text + '\n' + `${data['driver']} is heading to ${data['destination']} on ${data['date']} at ${data['heure']}. \n ${data['places_restantes']} place(s) left.`
             }
-            res.send({"fulfillmentText": text})
           }
+          res.send({"fulfillmentText": text})
         })
       break;
     default: res.send({}) ;
