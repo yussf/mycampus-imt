@@ -25,7 +25,6 @@ module.exports = (id, edtdate, callback) => {
         listH.sort((ele1,ele2) => {
             return - (ele2[1] - ele1[1])
         })
-        console.log(listH)
         listH.forEach(e => {
             var ev = data[e[0]]
             if (ev.type == 'VEVENT') {

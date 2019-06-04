@@ -2,6 +2,7 @@ require('dotenv').config()
 const manager = require('./manager.js')
 const scrapper = require('./scrapper.js')
 const icalParser = require('./icalParser')
+const carpool = require('./atlantic_express')
 module.exports = (req, res) => {
   // get original request as sent from facebook messenger
   let facebook_req = req.body.originalDetectIntentRequest
@@ -105,6 +106,27 @@ function handleIntent(intent){
       manager.getEDTidFromPSID(sender_psid, edt_id => {
         icalParser(edt_id, date, text => res.send({"fulfillmentText": text}))
       })
+      break;
+    case 'covoiturage':
+        let dest = req.body.queryResult.parameters.dest
+        carpool.getJourneys(data => {
+          var text = "Sorry. There's no result for your destination"
+          if (data.length == 1) text = "There's 1 person heading to your destination. Would you like to know more?"
+          if (data.length > 1) text = "There's "+data.length+" people heading to your destination. WOuld do you like more details?"
+          res.send({"fulfillmentText": text})
+        })
+      break;
+    case "covoiturage - yes":
+        let dest = req.body.queryResult.parameters.dest
+        carpool.getJourneys(data => {
+          for (journey in data){
+            var text = "Sorry. There's no result for your destination"
+            if (data.length > 1){
+              text = `${data['driver']} is heading to ${data['destination']} on ${data['date']} at ${data['heure']}. \n ${data['places_restantes']} place(s) left.`
+            }
+            res.send({"fulfillmentText": text})
+          }
+        })
       break;
     default: res.send({}) ;
 

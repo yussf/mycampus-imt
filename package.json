@@ -18,8 +18,7 @@
     "nodemailer": "latest",
     "pg": "^7.8.0",
     "request": "^2.72.0",
-    "uuid": "latest",
-    "zlib": "^1.0.5"
+    "uuid": "latest"
   },
   "engines": {
     "node": "latest"
