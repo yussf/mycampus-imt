@@ -128,7 +128,7 @@ function handleIntent(intent){
           else{
             for (i in data){
                 journey = data[i]
-                text = text + '\n' + `${journey.driver} is heading to ${journey.destination} on ${journey.date} at ${journey.heure}. \n ${journey.places_restantes} place(s) left.`
+                text = text + '\n' + `${journey.driver} is heading from ${journey.depart} to ${journey.destination} on ${journey.date} at ${journey.heure}.\n${journey.places_restantes} place(s) left.`
             }
           }
           res.send({"fulfillmentText": text})
