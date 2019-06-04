@@ -109,7 +109,7 @@ function handleIntent(intent){
       break;
     case 'covoiturage':
         let destination = req.body.queryResult.parameters.destination
-        let departure = req.body.queryResult.parameters.destination
+        let departure = req.body.queryResult.parameters.departure
         carpool.getJourneys(departure, destination, data => {
           var text = "Sorry. There's no result for your destination"
           if (data.length == 1) text = "There's 1 person heading to your destination. Would you like to know more?"
