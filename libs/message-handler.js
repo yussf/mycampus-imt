@@ -127,7 +127,6 @@ function handleIntent(intent){
           if (data.length == 0) text = "Sorry. There's no result for your destination"
           else{
             for (i in data){
-              console.log(journey)
                 journey = data[i]
                 text = text + '\n' + `${journey.driver} is heading to ${journey.destination} on ${journey.date} at ${journey.heure}. \n ${journey.places_restantes} place(s) left.`
             }
