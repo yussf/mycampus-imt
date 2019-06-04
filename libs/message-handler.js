@@ -121,7 +121,7 @@ function handleIntent(intent){
         var originalContext = req.body.queryResult.outputContexts[0].parameters
         var destination = originalContext.destination
         var departure = originalContext.departure
-        carpool.getJourneys(departure, departure, data => {
+        carpool.getJourneys(departure, destination, data => {
           var text = ""
           console.log(data);
           if (data.length == 0) text = "Sorry. There's no result for your destination"
