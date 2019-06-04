@@ -113,7 +113,7 @@ function handleIntent(intent){
         carpool.getJourneys(departure, destination, data => {
           var text = "Sorry. There's no result for your destination"
           if (data.length == 1) text = "There's 1 person heading to your destination. Would you like to know more?"
-          if (data.length > 1) text = "There's "+data.length+" people heading to your destination. WOuld do you like more details?"
+          if (data.length > 1) text = "There's "+data.length+" people heading to your destination. Would do you like more details?"
           res.send({"fulfillmentText": text})
         })
       break;
@@ -121,8 +121,6 @@ function handleIntent(intent){
         var originalContext = req.body.queryResult.outputContexts[0].parameters
         var destination = originalContext.destination
         var departure = originalContext.departure
-        console.log(destination);
-        console.log(departure);
         carpool.getJourneys(departure, departure, data => {
           var text = ""
           console.log(data);
