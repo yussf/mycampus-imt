@@ -108,7 +108,7 @@ function handleIntent(intent){
       })
       break;
     case 'covoiturage':
-        let dest = req.body.queryResult.parameters.dest
+        let dest = req.body.queryResult.parameters.destination
         carpool.getJourneys(dest, data => {
           var text = "Sorry. There's no result for your destination"
           if (data.length == 1) text = "There's 1 person heading to your destination. Would you like to know more?"
@@ -117,7 +117,7 @@ function handleIntent(intent){
         })
       break;
     case "covoiturage - yes":
-        let destt = req.body.queryResult.parameters.dest
+        let destt = req.body.queryResult.parameters.destination
         carpool.getJourneys(destt, data => {
           for (journey in data){
             var text = "Sorry. There's no result for your destination"
