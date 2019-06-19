@@ -18,5 +18,7 @@ app.post('/dialogflow', messageHandler)
 app.get('/verify/:userId/:uuid', verify)
 //handles the ping sent from the webApp, closes connection immediately
 app.post('/ping', (req,res) => res.end())
+//redirect to fb page
+app.get('*', (req, res) => res.redirect('https://www.facebook.com/mycampusimt'))
 //repeat notifier() every n*min
 setInterval(notifier, 1*min)

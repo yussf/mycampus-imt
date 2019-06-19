@@ -123,7 +123,7 @@ function handleIntent(intent){
         var departure = originalContext.departure
         carpool.getJourneys(departure, destination, data => {
           var text = ""
-          console.log(data);
+          //console.log(data);
           if (data.length == 0) text = "Sorry. There's no result for your destination"
           else{
             for (i in data){
