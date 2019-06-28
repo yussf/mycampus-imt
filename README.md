@@ -2,8 +2,8 @@
 Mycampus is a chatbot that helps the students interact with their campus.
 For more details, you can check the documentation about this project:
 
-[Project specifications(french)](docs/cdc.pdf)
-[Project Report(french)](docs/rapport.pdf)
+- [Project specifications(french)](docs/cdc.pdf)
+- [Project Report(french)](docs/rapport.pdf)
 
 
 
